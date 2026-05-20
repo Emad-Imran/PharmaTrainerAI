@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>
+        {{ page_title if page_title else "PharmaTrainerAI" }}
+    </title>
+    <link rel = "stylesheet" href = "/static/css/style.css">
+</head>
+<body>
+    <nav class = "top-nav">
+        <div class = "nav-brand">
+            <a href = "/">PharmaTrainerAI</a>
+        </div>
+        <div class = "nav-links">
+            <a href = "/">Home</a>
+            <a href = "/dashboard/1">Dashboard</a>
+            <a href = "/scenarios">Scenarios</a>
+            <a href = "/recommendation/1">AI Recommendation</a>
+            <a href = "/profile/1">Profile</a>
+            <a href = "/leaderboard">Leaderboard</a>
+            <a href = "docs">API Docs</a>
+        </div>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

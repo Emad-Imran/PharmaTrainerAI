@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <section class="intro-section">
+        <p class="eyebrow">Software Architecture and Pattern Design Project</p>
+
+        <h1>PharmaTrainerAI</h1>
+
+        <h2>AI-Enhanced Gamified Training Platform</h2>
+
+        <p class="description">
+            A smart pharmaceutical manufacturing training prototype where users solve
+            simulated production challenges, earn gamification rewards, and receive
+            AI-based adaptive recommendations.
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>AI Personalization</h3>
+                <p>Recommends the next challenge based on user performance history and weak areas.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Gamification</h3>
+                <p>Uses points, badges, levels, streaks, skill progress, and leaderboards.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Smart Manufacturing</h3>
+                <p>Simulates process control, quality, maintenance, safety, and packaging scenarios.</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a class="primary-button" href="/register">Get Started</a>
+            <a class="secondary-button" href="/login">Login</a>
+            <a class="secondary-button" href="/docs">API Docs</a>
+        </div>
+    </section>
+</section>
+{% endblock %}

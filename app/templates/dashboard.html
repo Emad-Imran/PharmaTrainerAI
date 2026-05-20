@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Training Dashboard</p>
+
+    <h1>Welcome, {{ user.full_name }}</h1>
+
+    <p class="description">
+        Continue your adaptive pharmaceutical manufacturing training journey.
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Total Points</h3>
+            <p class="metric-text">{{ user.total_points }}</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Current Level</h3>
+            <p class="metric-text">{{ user.current_level }}</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Current Streak</h3>
+            <p class="metric-text">{{ user.current_streak }} correct answer(s)</p>
+        </div>
+    </div>
+
+    <section class="question-box">
+        <h2>Recommended Next Action</h2>
+        <p>
+            Use the AI recommendation engine to receive your next suitable challenge
+            based on your previous scores and weak skill areas.
+        </p>
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/recommendation/{{ user.id }}">View AI Recommendation</a>
+        <a class="secondary-button" href="/scenarios">View Scenarios</a>
+        <a class="secondary-button" href="/profile/{{ user.id }}">My Profile</a>
+        <a class="secondary-button" href="/leaderboard">Leaderboard</a>
+    </div>
+</section>
+{% endblock %}

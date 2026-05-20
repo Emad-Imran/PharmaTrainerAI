@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Training Profile</p>
+
+    <h1>{{ user.full_name }}</h1>
+
+    <p class="description">
+        Track your progress, earned badges, skill performance, and recent training activity.
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Total Points</h3>
+            <p class="metric-text">{{ user.total_points }}</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Current Level</h3>
+            <p class="metric-text">{{ user.current_level }}</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Current Streak</h3>
+            <p class="metric-text">{{ user.current_streak }} correct answer(s)</p>
+        </div>
+    </div>
+
+    <section class="question-box">
+        <h2>Earned Badges</h2>
+
+        {% if earned_badges %}
+            <div class="badge-grid">
+                {% for user_badge, badge in earned_badges %}
+                    <div class="badge-card">
+                        <h3>{{ badge.name }}</h3>
+                        <p>{{ badge.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No badges earned yet. Complete scenarios correctly to unlock achievements.</p>
+        {% endif %}
+    </section>
+
+    <section class="question-box">
+        <h2>Skill Progress</h2>
+
+        {% if skill_scores %}
+            {% for skill in skill_scores %}
+                <div class="skill-row">
+                    <strong>{{ skill.category }}</strong>
+                    <span>{{ skill.average_score }}% average score</span>
+                    <p>{{ skill.correct_attempts }} correct out of {{ skill.total_attempts }} attempt(s)</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No skill progress available yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="question-box">
+        <h2>Recent Attempts</h2>
+
+        {% if recent_attempts %}
+            {% for attempt in recent_attempts %}
+                <div class="skill-row">
+                    <strong>Scenario ID: {{ attempt.scenario_id }}</strong>
+                    <span>Score: {{ attempt.score }}/100</span>
+                    <p>
+                        Selected: {{ attempt.selected_option }},
+                        Correct: {{ attempt.correct_option }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No attempts yet.</p>
+        {% endif %}
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/recommendation/{{ user.id }}">AI Recommendation</a>
+        <a class="secondary-button" href="/scenarios">Continue Training</a>
+        <a class="secondary-button" href="/leaderboard">View Leaderboard</a>
+    </div>
+</section>
+{% endblock %}

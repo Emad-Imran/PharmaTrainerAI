@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Training Scenarios</p>
+    <h1>Pharmaceutical Manufacturing Challenges</h1>
+
+    <p class="description">
+        Select a simulated manufacturing challenge and practice decision-making
+        in process control, quality, safety, packaging, and maintenance situations.
+    </p>
+
+    <div class="scenario-list">
+        {% for scenario in scenarios %}
+            <div class="scenario-card">
+                <div>
+                    <span class="tag">{{ scenario.category }}</span>
+                    <span class="difficulty">{{ scenario.difficulty }}</span>
+                </div>
+
+                <h3>{{ scenario.title }}</h3>
+                <p>{{ scenario.description }}</p>
+
+                <div class="scenario-footer">
+                    <strong>{{ scenario.reward_points }} points</strong>
+                    <a class="primary-button" href="/scenarios/{{ scenario.id }}">Start Scenario</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

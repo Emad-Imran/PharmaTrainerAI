@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - PharmaTrainerAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main class="form-card">
+        <h1>Login</h1>
+        <p class="description">
+            Access your training dashboard and continue your adaptive learning path.
+        </p>
+
+        {% if error %}
+            <div class="alert-box">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="/login" class="auth-form">
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="small-link">
+            New user? <a href="/register">Create an account</a>
+        </p>
+    </main>
+</body>
+</html>

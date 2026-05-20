@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">{{ scenario.category }} | {{ scenario.difficulty }}</p>
+
+    <h1>{{ scenario.title }}</h1>
+
+    <p class="description">
+        {{ scenario.description }}
+    </p>
+    <section class="question-box">
+        <h2>{{ category_info.display_label }}</h2>
+        <p>
+            <strong>Focus Area:</strong> {{ category_info.focus_area }}
+        </p>
+    </section>
+
+    <section class="parameter-box">
+        <h2>Simulated Process Parameters</h2>
+
+        <div class="parameter-grid">
+            {% for parameter in parameter_items %}
+                <div class="parameter-item">{{ parameter }}</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="question-box">
+        <h2>Decision Challenge</h2>
+
+        <p class="question-text">{{ scenario.question }}</p>
+
+        <form method="post" action="/scenarios/{{ scenario.id }}/attempt">
+            <input type="hidden" name="user_id" value="1">
+
+            <label class="option-row">
+                <input type="radio" name="selected_option" value="A" required>
+                <span>A. {{ scenario.option_a }}</span>
+            </label>
+
+            <label class="option-row">
+                <input type="radio" name="selected_option" value="B" required>
+                <span>B. {{ scenario.option_b }}</span>
+            </label>
+
+            <label class="option-row">
+                <input type="radio" name="selected_option" value="C" required>
+                <span>C. {{ scenario.option_c }}</span>
+            </label>
+
+            <label class="option-row">
+                <input type="radio" name="selected_option" value="D" required>
+                <span>D. {{ scenario.option_d }}</span>
+            </label>
+
+            <div class="actions">
+                <button class="primary-button" type="submit">Submit Answer</button>
+                <a class="secondary-button" href="/scenarios">Back to Scenarios</a>
+            </div>
+        </form>
+    </section>
+</section>
+{% endblock %}

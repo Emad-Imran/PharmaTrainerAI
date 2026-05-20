@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Leaderboard</p>
+
+    <h1>Top PharmaTrainerAI Users</h1>
+
+    <p class="description">
+        Users are ranked by total points earned from pharmaceutical manufacturing challenges.
+    </p>
+
+    <section class="question-box">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Level</th>
+                    <th>Points</th>
+                    <th>Streak</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.full_name }}</td>
+                        <td>{{ user.current_level }}</td>
+                        <td>{{ user.total_points }}</td>
+                        <td>{{ user.current_streak }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/scenarios">Train More</a>
+        <a class="secondary-button" href="/">Back Home</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">AI Recommendation Engine</p>
+
+    <h1>Recommended Next Challenge</h1>
+
+    <p class="description">
+        The system analyzed your historical performance and selected the next suitable training challenge.
+    </p>
+
+    <section class="question-box">
+        <h2>{{ scenario.title }}</h2>
+
+        <p><strong>Category:</strong> {{ recommendation.recommended_category }}</p>
+        <p><strong>Difficulty:</strong> {{ recommendation.recommended_difficulty }}</p>
+
+        <h2>AI Reason</h2>
+        <p>{{ recommendation.reason }}</p>
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/scenarios/{{ scenario.id }}">Start Recommended Challenge</a>
+        <a class="secondary-button" href="/profile/{{ user.id }}">Back to Profile</a>
+        <a class="secondary-button" href="/dashboard/{{ user.id }}">Back to Dashboard</a>
+    </div>
+</section>
+{% endblock %}

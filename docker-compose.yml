@@ -1,0 +1,10 @@
+services:
+  pharmatrainerai:
+    build: .
+    container_name: pharmatrainerai_app
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./pharmatrainer.db:/app/pharmatrainer.db
+    environment:
+      - PYTHONUNBUFFERED=1
