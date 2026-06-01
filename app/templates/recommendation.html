@@ -2,22 +2,32 @@
 
 {% block content %}
 <section class="landing-card">
-    <p class="eyebrow">AI Recommendation Engine</p>
+    <p class="eyebrow">ML-Based AI Recommendation Engine</p>
 
     <h1>Recommended Next Challenge</h1>
 
     <p class="description">
-        The system analyzed your historical performance and selected the next suitable training challenge.
+        The system analyzed your training history and used a machine learning
+        classification model to recommend your next suitable difficulty level.
     </p>
 
     <section class="question-box">
         <h2>{{ scenario.title }}</h2>
 
-        <p><strong>Category:</strong> {{ recommendation.recommended_category }}</p>
-        <p><strong>Difficulty:</strong> {{ recommendation.recommended_difficulty }}</p>
+        <p><strong>Recommended Category:</strong> {{ recommendation.recommended_category }}</p>
+        <p><strong>Predicted Difficulty Level:</strong> {{ recommendation.recommended_difficulty }}</p>
 
-        <h2>AI Reason</h2>
+        <h2>ML Recommendation Reason</h2>
         <p>{{ recommendation.reason }}</p>
+    </section>
+
+    <section class="question-box">
+        <h2>How the ML Recommendation Works</h2>
+        <p>
+            The classifier uses performance features such as average score,
+            correct rate, total attempts, latest score, current streak, and
+            current difficulty to estimate the next suitable level.
+        </p>
     </section>
 
     <div class="actions">

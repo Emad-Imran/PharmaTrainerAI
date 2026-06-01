@@ -337,10 +337,14 @@ def show_ai_recommendation(
     if not user:
         return RedirectResponse(url="/login", status_code=303)
 
+    attempt_repository = AttemptRepository(database)
+
     recommendation_service = RuleBasedRecommendationService(
         skill_score_repository=skill_score_repository,
         scenario_repository=scenario_repository,
         recommendation_repository=recommendation_repository,
+        attempt_repository=attempt_repository,
+        user_repository=user_repository,
     )
 
     recommendation = recommendation_service.recommend_next_scenario(user_id=user_id)

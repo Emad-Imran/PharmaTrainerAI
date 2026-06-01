@@ -61,3 +61,32 @@ class AttemptRepository:
             )
             .count()
         )
+
+    def calculate_user_performance_summary(self, user_id: int):
+        attempts = self.find_by_user(user_id=user_id)
+
+        if not attempts:
+            return {
+                "average_score": 0,
+                "correct_rate": 0,
+                "total_attempts": 0,
+                "latest_score": 0,
+                "latest_difficulty": "Beginner",
+            }
+
+        total_attempts = len(attempts)
+        total_score = sum(attempt.score for attempt in attempts)
+        correct_attempts = sum(1 for attempt in attempts if attempt.is_correct)
+
+        latest_attempt = attempts[0]
+
+        average_score = int(total_score / total_attempts)
+        correct_rate = round(correct_attempts / total_attempts, 2)
+
+        return {
+            "average_score": average_score,
+            "correct_rate": correct_rate,
+            "total_attempts": total_attempts,
+            "latest_score": latest_attempt.score,
+            "latest_difficulty": "Beginner",
+        }
