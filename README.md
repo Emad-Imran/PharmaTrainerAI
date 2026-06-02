@@ -1,70 +1,53 @@
 # PharmaTrainerAI
 
-## AI-Enhanced Gamified Training Platform for Smart Pharmaceutical Manufacturing
+## ML-Enhanced Adaptive Gamified Training Platform for Smart Pharmaceutical Manufacturing
 
-PharmaTrainerAI is a software architecture and design pattern project that combines Artificial Intelligence, gamification, and simulated pharmaceutical manufacturing scenarios.
+PharmaTrainerAI is a Software Architecture and Design Pattern project focused on adaptive training for pharmaceutical manufacturing. The system combines gamification, mastery-based learning, and a machine learning classification model to recommend the next suitable training level for a user.
 
-The system allows users to solve decision-based manufacturing challenges, earn points and badges, track skill progress, view leaderboard rankings, and receive AI-based recommendations for the next suitable challenge based on their historical performance.
+The platform is designed as a two-service application:
+
+1. **Core Training Service**  
+   Handles users, scenarios, attempts, scoring, gamification, mastery progress, UI pages, and database operations.
+
+2. **ML Recommendation Service**  
+   Uses a Scikit-learn classification model to predict the next suitable learning level: Beginner, Intermediate, or Advanced.
 
 ---
 
 ## Project Purpose
 
-The main purpose of this project is to demonstrate how AI and gamification can be combined to create an adaptive learning and training platform for smart pharmaceutical manufacturing.
+The goal of this project is to build an adaptive learning platform where a trainee progresses through pharmaceutical manufacturing scenarios in a structured way.
 
-The platform focuses on simulated challenges related to:
+The user starts from the Beginner level. If the user answers incorrectly, the system detects the weak area and shows corrective learning guidance based on the selected research papers. The user cannot randomly jump to higher levels. Intermediate and Advanced levels unlock only after mastery of the previous level.
 
-- Process control
-- Quality control
-- Predictive maintenance
-- Safety and compliance
-- Packaging inspection
+After completing Advanced level, the system unlocks industry exposure guidance and suggests relevant pharmaceutical manufacturing departments.
 
 ---
 
 ## Main Features
 
 - User registration and login
-- Dashboard with user progress
-- Simulated pharmaceutical manufacturing scenarios
-- Digital twin-style process parameters
-- Scenario answer submission
-- Scoring system
-- Points, levels, streaks, and badges
-- Skill progress tracking
-- Leaderboard
-- AI-based next challenge recommendation
-- FastAPI Swagger documentation
-- Dockerized deployment
+- Adaptive scenario-based training
+- Beginner, Intermediate, and Advanced learning levels
+- Locked level progression
+- Mastery-based learning path
+- Weak-area detection after incorrect answers
+- Research-paper-based learning hints
+- ML-based difficulty recommendation
+- Separate ML recommendation microservice
+- Gamification with points, levels, streaks, badges, and leaderboard
+- Profile page with progress tracking
+- Industry exposure unlock after Advanced mastery
+- Docker Compose setup for two services
 - Design pattern implementation
 
 ---
 
-## Technology Stack
+## Machine Learning Component
 
-| Component | Technology |
-|---|---|
-| Backend | Python FastAPI |
-| UI | Jinja2 Templates + CSS |
-| Database | SQLite for local prototype |
-| ORM | SQLAlchemy |
-| Authentication | Password hashing with Passlib |
-| Containerization | Docker and Docker Compose |
-| Documentation | Markdown |
-| IDE | PyCharm |
+The project includes a separate ML microservice built with FastAPI and Scikit-learn.
 
----
-
-## Architecture
-
-The project follows a Modular Monolith architecture with Clean Architecture principles.
-
-Main layers:
+### Model Used
 
 ```text
-UI Layer
-FastAPI Route Layer
-Service Layer
-Repository Layer
-Database Model Layer
-Pattern Layer
+RandomForestClassifier

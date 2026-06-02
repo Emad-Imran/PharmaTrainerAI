@@ -1,36 +1,46 @@
 # Architecture Overview
 
-PharmaTrainerAI uses a Modular Monolith architecture with Clean Architecture principles.
+PharmaTrainerAI uses a modular architecture with two Dockerized services.
 
-## Main Layers
+## Services
 
-1. UI Layer  
-   Jinja2 templates and CSS files render the user interface.
+### 1. Core Training Service
 
-2. API Layer  
-   FastAPI routes handle HTTP requests and responses.
+The Core Training Service is the main FastAPI application. It handles:
 
-3. Service Layer  
-   Business logic is placed inside service classes.
+- User registration and login
+- Scenario listing and scenario detail pages
+- Attempt submission
+- Scoring
+- Gamification
+- Mastery-based learning progression
+- Profile and leaderboard
+- AI recommendation page
+- Communication with the ML service
 
-4. Repository Layer  
-   Database operations are isolated inside repository classes.
+### 2. ML Recommendation Service
 
-5. Model Layer  
-   SQLAlchemy models define the database tables.
+The ML Recommendation Service is a separate FastAPI microservice. It uses a Scikit-learn RandomForestClassifier to predict the next suitable difficulty level.
 
-6. Pattern Layer  
-   Design pattern implementations are stored inside the patterns directory.
+The prediction classes are:
 
-## Why Modular Monolith?
+- Beginner
+- Intermediate
+- Advanced
 
-A modular monolith is suitable for this academic prototype because it is easier to develop and test while still maintaining separation of concerns. Each module can later be separated into microservices if required.
+---
 
-## Main Modules
+## Architecture Diagram
 
-- Authentication Module
-- Scenario Module
-- Attempt and Scoring Module
-- Gamification Module
-- AI Recommendation Module
-- Profile and Leaderboard Module
+```text
+Browser / User
+     |
+     v
+Core Training Service - FastAPI, Jinja2, SQLAlchemy
+     |
+     | HTTP request through Adapter Pattern
+     v
+ML Recommendation Service - FastAPI, Scikit-learn
+     |
+     v
+Prediction: Beginner / Intermediate / Advanced
