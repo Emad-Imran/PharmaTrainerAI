@@ -324,3 +324,16 @@ button.primary-button {
     font-weight: 800;
     color: #2f7d4f;
 }
+.locked-card {
+    opacity: 0.55;
+    filter: grayscale(0.3);
+}
+
+.locked-label {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: #e5e7eb;
+    color: #6b7280;
+    font-weight: 800;
+}

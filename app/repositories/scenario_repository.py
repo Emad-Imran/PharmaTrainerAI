@@ -8,7 +8,10 @@ class ScenarioRepository:
         self.database = database
 
     def find_all(self):
-        return self.database.query(Scenario).order_by(Scenario.id.asc()).all()
+        return self.database.query(Scenario).order_by(
+            Scenario.level_order.asc(),
+            Scenario.id.asc()
+        ).all()
 
     def find_by_id(self, scenario_id: int):
         return self.database.query(Scenario).filter(Scenario.id == scenario_id).first()
@@ -31,6 +34,10 @@ class ScenarioRepository:
         correct_option: str,
         explanation: str,
         reward_points: int,
+        weak_area: str,
+        level_order: int,
+        research_reference: str,
+        learning_hint: str,
     ):
         scenario = Scenario(
             title=title,
@@ -46,6 +53,10 @@ class ScenarioRepository:
             correct_option=correct_option,
             explanation=explanation,
             reward_points=reward_points,
+            weak_area=weak_area,
+            level_order=level_order,
+            research_reference=research_reference,
+            learning_hint=learning_hint,
         )
 
         self.database.add(scenario)
@@ -53,6 +64,7 @@ class ScenarioRepository:
         self.database.refresh(scenario)
 
         return scenario
+
     def find_ids_by_category(self, category: str):
         scenarios = (
             self.database.query(Scenario)
@@ -61,6 +73,7 @@ class ScenarioRepository:
         )
 
         return [scenario.id for scenario in scenarios]
+
     def find_by_category_and_difficulty(self, category: str, difficulty: str):
         return (
             self.database.query(Scenario)
@@ -80,3 +93,19 @@ class ScenarioRepository:
 
     def find_first_available(self):
         return self.database.query(Scenario).order_by(Scenario.id.asc()).first()
+
+    def find_by_difficulty(self, difficulty: str):
+        return (
+            self.database.query(Scenario)
+            .filter(Scenario.difficulty == difficulty)
+            .order_by(Scenario.id.asc())
+            .all()
+        )
+
+    def find_next_by_level(self, level_order: int):
+        return (
+            self.database.query(Scenario)
+            .filter(Scenario.level_order == level_order)
+            .order_by(Scenario.id.asc())
+            .first()
+        )

@@ -1,10 +1,25 @@
 services:
-  pharmatrainerai:
-    build: .
-    container_name: pharmatrainerai_app
+  core_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pharmatrainerai_core_app
     ports:
       - "8001:8001"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ML_SERVICE_URL=http://ml_service:9000
     volumes:
       - ./pharmatrainer.db:/app/pharmatrainer.db
+    depends_on:
+      - ml_service
+
+  ml_service:
+    build:
+      context: ./ml_service
+      dockerfile: Dockerfile
+    container_name: pharmatrainerai_ml_service
+    ports:
+      - "9000:9000"
     environment:
       - PYTHONUNBUFFERED=1

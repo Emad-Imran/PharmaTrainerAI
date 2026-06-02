@@ -26,3 +26,8 @@ class Scenario(Base):
     explanation = Column(Text, nullable=False)
 
     reward_points = Column(Integer, default=100)
+
+    weak_area = Column(String(120), default="General Manufacturing Decision")
+    level_order = Column(Integer, default=1)
+    research_reference = Column(Text, default="Research reference will be shown here.")
+    learning_hint = Column(Text, default="Review the related concept before attempting the next scenario.")

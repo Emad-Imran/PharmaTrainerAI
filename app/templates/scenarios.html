@@ -2,20 +2,37 @@
 
 {% block content %}
 <section class="landing-card">
-    <p class="eyebrow">Training Scenarios</p>
-    <h1>Pharmaceutical Manufacturing Challenges</h1>
+    <p class="eyebrow">Adaptive Learning Path</p>
+    <h1>Pharmaceutical Manufacturing Training Levels</h1>
 
     <p class="description">
-        Select a simulated manufacturing challenge and practice decision-making
-        in process control, quality, safety, packaging, and maintenance situations.
+        Progress through Beginner, Intermediate, and Advanced levels. Higher levels
+        unlock only after mastery of the previous level.
     </p>
+
+    <section class="question-box">
+        <h2>Current Progress</h2>
+        <p><strong>Current Unlocked Level:</strong> {{ mastery_status.current_level }}</p>
+        <p><strong>Beginner:</strong> {{ mastery_status.beginner_progress }}</p>
+        <p><strong>Intermediate:</strong> {{ mastery_status.intermediate_progress }}</p>
+        <p><strong>Advanced:</strong> {{ mastery_status.advanced_progress }}</p>
+        <p><strong>Next Action:</strong> {{ mastery_status.next_action }}</p>
+
+        {% if mastery_status.industry_unlocked %}
+            <div class="actions">
+                <a class="primary-button" href="/industry-exposure/1">View Industry Exposure</a>
+            </div>
+        {% endif %}
+    </section>
 
     <div class="scenario-list">
         {% for scenario in scenarios %}
-            <div class="scenario-card">
+            {% set is_unlocked = mastery_status.industry_unlocked or scenario.level_order == mastery_status.unlocked_level_order %}
+
+            <div class="scenario-card {% if not is_unlocked %}locked-card{% endif %}">
                 <div>
-                    <span class="tag">{{ scenario.category }}</span>
-                    <span class="difficulty">{{ scenario.difficulty }}</span>
+                    <span class="tag">{{ scenario.difficulty }} Level</span>
+                    <span class="difficulty">{{ scenario.category }}</span>
                 </div>
 
                 <h3>{{ scenario.title }}</h3>
@@ -23,7 +40,12 @@
 
                 <div class="scenario-footer">
                     <strong>{{ scenario.reward_points }} points</strong>
-                    <a class="primary-button" href="/scenarios/{{ scenario.id }}">Start Scenario</a>
+
+                    {% if is_unlocked %}
+                        <a class="primary-button" href="/scenarios/{{ scenario.id }}?user_id={{ user_id }}">Start Scenario</a>
+                    {% else %}
+                        <span class="locked-label">Locked</span>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

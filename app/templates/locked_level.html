@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Level Locked</p>
+
+    <h1>{{ scenario.difficulty }} Level Is Locked</h1>
+
+    <p class="description">
+        You cannot access this scenario yet because the adaptive learning path
+        requires mastery of the previous level first.
+    </p>
+
+    <section class="question-box">
+        <h2>Why is this locked?</h2>
+        <p>{{ locked_message }}</p>
+
+        <h2>Your Current Progress</h2>
+        <p><strong>Current Level:</strong> {{ mastery_status.current_level }}</p>
+        <p><strong>Beginner:</strong> {{ mastery_status.beginner_progress }}</p>
+        <p><strong>Intermediate:</strong> {{ mastery_status.intermediate_progress }}</p>
+        <p><strong>Advanced:</strong> {{ mastery_status.advanced_progress }}</p>
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/scenarios">Back to Available Scenarios</a>
+    </div>
+</section>
+{% endblock %}

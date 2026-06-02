@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-card">
+    <p class="eyebrow">Industry Exposure Unlocked</p>
+
+    <h1>You Are Ready for Industry-Oriented Training</h1>
+
+    <p class="description">
+        You have completed Beginner, Intermediate, and Advanced learning levels.
+        The system now recommends specialization areas in pharmaceutical manufacturing.
+    </p>
+
+    <section class="question-box">
+        <h2>Recommended Industry Departments</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Quality Control</h3>
+                <p>Suitable for roles involving inspection, defect analysis, and batch quality monitoring.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Process Control</h3>
+                <p>Suitable for roles involving process monitoring, deviation response, and production stability.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Predictive Maintenance</h3>
+                <p>Suitable for roles involving equipment monitoring, vibration alerts, and maintenance planning.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Safety and Compliance</h3>
+                <p>Suitable for roles involving GMP awareness, contamination risk handling, and safety decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="question-box">
+        <h2>Completion Summary</h2>
+        <p><strong>Beginner:</strong> {{ mastery_status.beginner_progress }}</p>
+        <p><strong>Intermediate:</strong> {{ mastery_status.intermediate_progress }}</p>
+        <p><strong>Advanced:</strong> {{ mastery_status.advanced_progress }}</p>
+        <p>{{ mastery_status.next_action }}</p>
+    </section>
+
+    <div class="actions">
+        <a class="primary-button" href="/profile/{{ user_id }}">View Final Profile</a>
+        <a class="secondary-button" href="/leaderboard">Leaderboard</a>
+    </div>
+</section>
+{% endblock %}

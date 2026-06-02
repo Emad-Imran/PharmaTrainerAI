@@ -27,7 +27,8 @@ from app.services.recommendation_service import RuleBasedRecommendationService
 from app.patterns.submission_facade import ScenarioSubmissionFacade
 """ The below is the Factory Pattern Library"""
 from app.patterns.scenario_factory import ScenarioCategoryFactory
-
+"""The below is the Mastery Service File Library"""
+from app.services.mastery_service import MasteryService
 BASE_DIR = Path(__file__).resolve().parent
 settings = get_settings()
 
@@ -172,38 +173,73 @@ def show_dashboard(
 @app.get("/scenarios")
 def show_scenarios(
     request: Request,
+    user_id: int = 1,
     database: Session = Depends(get_database_session),
 ):
     scenario_repository = ScenarioRepository(database)
     scenario_service = ScenarioService(scenario_repository)
+    attempt_repository = AttemptRepository(database)
+
+    mastery_service = MasteryService(
+        attempt_repository=attempt_repository,
+        scenario_repository=scenario_repository,
+    )
 
     scenarios = scenario_service.get_all_scenarios()
+    mastery_status = mastery_service.get_mastery_status(user_id=user_id)
 
     return templates.TemplateResponse(
         request=request,
         name="scenarios.html",
-        context={"scenarios": scenarios},
+        context={
+            "scenarios": scenarios,
+            "mastery_status": mastery_status,
+            "user_id": user_id,
+        },
     )
-
 
 @app.get("/scenarios/{scenario_id}")
 def show_scenario_detail(
     request: Request,
     scenario_id: int,
+    user_id: int = 1,
     database: Session = Depends(get_database_session),
 ):
     scenario_repository = ScenarioRepository(database)
     scenario_service = ScenarioService(scenario_repository)
+    attempt_repository = AttemptRepository(database)
 
     scenario = scenario_service.get_scenario_by_id(scenario_id)
 
     if not scenario:
         return RedirectResponse(url="/scenarios", status_code=303)
 
+    mastery_service = MasteryService(
+        attempt_repository=attempt_repository,
+        scenario_repository=scenario_repository,
+    )
+
+    if not mastery_service.can_access_scenario(user_id=user_id, scenario=scenario):
+        locked_message = mastery_service.get_locked_message(
+            user_id=user_id,
+            scenario=scenario,
+        )
+
+        return templates.TemplateResponse(
+            request=request,
+            name="locked_level.html",
+            context={
+                "scenario": scenario,
+                "locked_message": locked_message,
+                "mastery_status": mastery_service.get_mastery_status(user_id=user_id),
+            },
+        )
+
     parameter_items = [
         item.strip()
         for item in scenario.process_parameters.split("|")
     ]
+
     category_info = ScenarioCategoryFactory.create_category(scenario.category)
 
     return templates.TemplateResponse(
@@ -215,7 +251,6 @@ def show_scenario_detail(
             "category_info": category_info,
         },
     )
-
 
 @app.get("/scenarios/{scenario_id}/attempt")
 def redirect_attempt_get_request(scenario_id: int):
@@ -261,6 +296,12 @@ def show_attempt_result(
 
     scenario = scenario_repository.find_by_id(attempt.scenario_id)
     user = user_repository.find_by_id(attempt.user_id)
+    mastery_service = MasteryService(
+        attempt_repository=attempt_repository,
+        scenario_repository=scenario_repository,
+    )
+
+    mastery_status = mastery_service.get_mastery_status(user_id=attempt.user_id)
 
     return templates.TemplateResponse(
         request=request,
@@ -269,6 +310,7 @@ def show_attempt_result(
             "attempt": attempt,
             "scenario": scenario,
             "user": user,
+            "mastery_status": mastery_status,
         },
     )
 @app.get("/profile/{user_id}")
@@ -363,7 +405,33 @@ def show_ai_recommendation(
             "scenario": scenario,
         },
     )
+@app.get("/industry-exposure/{user_id}")
+def show_industry_exposure(
+    request: Request,
+    user_id: int,
+    database: Session = Depends(get_database_session),
+):
+    scenario_repository = ScenarioRepository(database)
+    attempt_repository = AttemptRepository(database)
 
+    mastery_service = MasteryService(
+        attempt_repository=attempt_repository,
+        scenario_repository=scenario_repository,
+    )
+
+    mastery_status = mastery_service.get_mastery_status(user_id=user_id)
+
+    if not mastery_status["industry_unlocked"]:
+        return RedirectResponse(url="/scenarios", status_code=303)
+
+    return templates.TemplateResponse(
+        request=request,
+        name="industry_exposure.html",
+        context={
+            "mastery_status": mastery_status,
+            "user_id": user_id,
+        },
+    )
 @app.get("/health")
 def health_check():
     return {

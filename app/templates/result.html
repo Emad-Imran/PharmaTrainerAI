@@ -39,6 +39,37 @@
         <p>{{ scenario.explanation }}</p>
     </section>
 
+    {% if not attempt.is_correct %}
+        <section class="question-box">
+            <h2>Weak Area Detected</h2>
+            <p><strong>{{ scenario.weak_area }}</strong></p>
+
+            <h2>Learning Hint</h2>
+            <p>{{ scenario.learning_hint }}</p>
+
+            <h2>Suggested Research Reference</h2>
+            <p>{{ scenario.research_reference }}</p>
+
+            <p>
+                Before moving forward, review this concept and try another
+                scenario from the same level or category.
+            </p>
+        </section>
+    {% endif %}
+
+    <section class="question-box">
+        <h2>Mastery Progress</h2>
+
+        <p><strong>Current Learning Level:</strong> {{ mastery_status.current_level }}</p>
+        <p><strong>Beginner Progress:</strong> {{ mastery_status.beginner_progress }}</p>
+        <p><strong>Intermediate Progress:</strong> {{ mastery_status.intermediate_progress }}</p>
+        <p><strong>Advanced Progress:</strong> {{ mastery_status.advanced_progress }}</p>
+        <p><strong>Performance Summary:</strong> {{ mastery_status.mastery_message }}</p>
+
+        <h2>Next Action</h2>
+        <p>{{ mastery_status.next_action }}</p>
+    </section>
+
     <section class="question-box">
         <h2>Updated Training Profile</h2>
         <p><strong>Total Points:</strong> {{ user.total_points }}</p>
@@ -47,7 +78,7 @@
     </section>
 
     <div class="actions">
-        <a class="primary-button" href="/recommendation/{{ user.id }}">View AI Recommendation</a>
+        <a class="primary-button" href="/recommendation/{{ user.id }}">View ML Recommendation</a>
         <a class="secondary-button" href="/scenarios">Try Another Scenario</a>
         <a class="secondary-button" href="/profile/{{ user.id }}">My Profile</a>
     </div>

@@ -1,18 +1,23 @@
+import os
+
 import requests
 
 
 class MLServiceAdapter:
     """
     Adapter Pattern:
-    This adapter connects the main training application with the external
-    ML recommendation microservice.
+    Connects the core training service with the ML recommendation service.
 
-    If the ML service is unavailable, the main app can still continue by
-    using rule-based fallback logic.
+    In local development, the ML service runs on 127.0.0.1:9000.
+    In Docker Compose, the ML service is reached using the service name:
+    http://ml_service:9000
     """
 
-    def __init__(self, service_url: str = "http://127.0.0.1:9000"):
-        self.service_url = service_url
+    def __init__(self, service_url: str | None = None):
+        self.service_url = service_url or os.getenv(
+            "ML_SERVICE_URL",
+            "http://127.0.0.1:9000",
+        )
 
     def predict_next_level(
         self,
@@ -47,5 +52,8 @@ class MLServiceAdapter:
                 "recommended_level": None,
                 "confidence": 0.0,
                 "model_type": "Rule-based fallback",
-                "explanation": "ML service is unavailable, so the system used fallback recommendation logic.",
+                "explanation": (
+                    "ML service is unavailable, so the system used fallback "
+                    "recommendation logic."
+                ),
             }

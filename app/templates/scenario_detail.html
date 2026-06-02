@@ -2,17 +2,20 @@
 
 {% block content %}
 <section class="landing-card">
-    <p class="eyebrow">{{ scenario.category }} | {{ scenario.difficulty }}</p>
+    <p class="eyebrow">{{ scenario.difficulty }} Level | {{ scenario.category }}</p>
 
     <h1>{{ scenario.title }}</h1>
 
     <p class="description">
         {{ scenario.description }}
     </p>
+
     <section class="question-box">
-        <h2>{{ category_info.display_label }}</h2>
+        <h2>Training Level Information</h2>
+        <p><strong>Current Level:</strong> {{ scenario.difficulty }}</p>
+        <p><strong>Target Skill Area:</strong> {{ scenario.weak_area }}</p>
         <p>
-            <strong>Focus Area:</strong> {{ category_info.focus_area }}
+            Complete scenarios at this level to build mastery before moving to the next level.
         </p>
     </section>
 
