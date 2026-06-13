@@ -1,0 +1,182 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/leaderboard.css">
+
+<section class="leaderboard-page">
+    <section class="leaderboard-hero">
+        <div class="leaderboard-hero-content">
+            <span class="leaderboard-eyebrow">🏆 PharmaTrainerAI Leaderboard</span>
+
+            <h1 class="leaderboard-title">
+                Top Performing <span>Pharma Trainees</span>
+            </h1>
+
+            <p class="leaderboard-description">
+                Users are ranked by total points earned from pharmaceutical manufacturing,
+                GMP, quality control, safety, and packaging training challenges.
+            </p>
+
+            <div class="leaderboard-tags">
+                <span class="leaderboard-tag">💊 Pharma Performance</span>
+                <span class="leaderboard-tag">⚕ Clinical-Style Ranking</span>
+                <span class="leaderboard-tag">🧪 QC & GMP Progress</span>
+                <span class="leaderboard-tag">🏆 Points-Based Competition</span>
+            </div>
+        </div>
+
+        <div class="leaderboard-hero-visual">
+            <div class="leaderboard-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 600 420" role="img">
+                    <defs>
+                        <linearGradient id="leaderCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="leaderLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="leaderPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="52" y="72" width="496" height="276" rx="38" fill="url(#leaderPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="100" y="250" width="76" height="76" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="3"/>
+                    <rect x="218" y="196" width="86" height="130" rx="20" fill="rgba(255,255,255,0.24)" stroke="rgba(255,255,255,0.44)" stroke-width="3"/>
+                    <rect x="348" y="224" width="76" height="102" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="3"/>
+
+                    <circle cx="261" cy="150" r="48" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M238 150h46M261 127v46" stroke="#ffb7c0" stroke-width="11" stroke-linecap="round"/>
+
+                    <rect x="350" y="118" width="138" height="44" rx="22" fill="url(#leaderCapsule)" transform="rotate(-15 419 140)"/>
+                    <line x1="419" y1="100" x2="419" y2="184" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-15 419 140)"/>
+
+                    <rect x="110" y="114" width="54" height="128" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="123" y="154" width="28" height="60" rx="10" fill="url(#leaderLiquid)" opacity="0.92"/>
+                    <rect x="124" y="90" width="26" height="32" rx="8" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M82 376 C170 338, 300 400, 520 354" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="leaderboard-summary">
+        <article class="summary-card">
+            <div class="summary-icon">🏆</div>
+            <h3>Competitive Learning</h3>
+            <p>
+                Learners climb the ranking by completing professional pharmaceutical training scenarios.
+            </p>
+        </article>
+
+        <article class="summary-card">
+            <div class="summary-icon">💊</div>
+            <h3>Pharma Skills</h3>
+            <p>
+                Scores reflect practice in GMP, manufacturing, quality control, and safety decisions.
+            </p>
+        </article>
+
+        <article class="summary-card">
+            <div class="summary-icon">⚕</div>
+            <h3>Clinical Discipline</h3>
+            <p>
+                Rankings encourage careful, compliant, and doctor-style decision thinking.
+            </p>
+        </article>
+    </section>
+
+    <section class="leaderboard-panel">
+        <div class="panel-header">
+            <div>
+                <span class="section-badge">📊 Ranking Table</span>
+
+                <h2>Top PharmaTrainerAI users</h2>
+
+                <p>
+                    Users are ranked by total points earned from pharmaceutical manufacturing challenges.
+                </p>
+            </div>
+
+            <div class="table-pill">
+                🧪 Live training ranking
+            </div>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>Level</th>
+                        <th>Points</th>
+                        <th>Streak</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>
+                                <span class="rank-badge {% if loop.index == 1 %}rank-1{% elif loop.index == 2 %}rank-2{% elif loop.index == 3 %}rank-3{% endif %}">
+                                    {{ loop.index }}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar">⚕</div>
+                                    <div>
+                                        <span class="user-name">{{ user.full_name }}</span>
+                                        <span class="user-role">Pharma trainee</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <span class="level-pill">✚ {{ user.current_level }}</span>
+                            </td>
+
+                            <td>
+                                <span class="points-pill">🏆 {{ user.total_points }}</span>
+                            </td>
+
+                            <td>
+                                <span class="streak-pill">🔥 {{ user.current_streak }}</span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="actions-panel">
+        <div class="actions-header">
+            <span class="section-badge">✚ Continue Training</span>
+
+            <h2>Improve your leaderboard position</h2>
+
+            <p>
+                Complete more pharmaceutical training scenarios to earn points, build streaks,
+                and improve your ranking.
+            </p>
+        </div>
+
+        <div class="actions">
+            <a class="primary-button" href="/scenarios">Train More</a>
+            <a class="secondary-button" href="/">Back Home</a>
+        </div>
+    </section>
+</section>
+{% endblock %}

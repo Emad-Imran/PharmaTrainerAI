@@ -1,0 +1,191 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/home.css">
+
+<section class="home-page">
+    <section class="home-hero">
+        <div class="hero-left">
+            <span class="home-eyebrow">✚ Software Architecture & Pattern Design Project</span>
+
+            <h1 class="home-title">
+                PharmaTrainer<span>AI</span>
+            </h1>
+
+            <h2 class="home-subtitle">
+                AI-Enhanced Gamified Pharmaceutical Training Platform
+            </h2>
+
+            <p class="home-description">
+                A professional pharmaceutical manufacturing training prototype where learners solve
+                realistic production, GMP, quality control, safety, and packaging challenges while
+                earning rewards and receiving AI-based adaptive recommendations.
+            </p>
+
+            <div class="hero-actions">
+                <a class="home-primary-button" href="/register">✚ Get Started</a>
+                <a class="home-secondary-button" href="/login">Login</a>
+                <a class="home-secondary-button" href="/docs">API Docs</a>
+            </div>
+
+            <div class="hero-badges">
+                <span class="hero-badge">💊 Pharma Scenarios</span>
+                <span class="hero-badge">⚕ Doctor-Style Interface</span>
+                <span class="hero-badge">🧪 Quality Control</span>
+                <span class="hero-badge">🤖 AI Recommendation</span>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="pharma-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 620 430" role="img">
+                    <defs>
+                        <linearGradient id="homeCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="homeLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="homePanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="58" y="72" width="504" height="292" rx="38" fill="url(#homePanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="92" y="108" width="190" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="92" y="158" width="132" height="20" rx="10" fill="rgba(216,255,245,0.58)"/>
+                    <rect x="92" y="196" width="180" height="20" rx="10" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="92" y="234" width="150" height="20" rx="10" fill="rgba(255,255,255,0.18)"/>
+
+                    <circle cx="432" cy="166" r="70" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M399 166h66M432 133v66" stroke="#ffb7c0" stroke-width="15" stroke-linecap="round"/>
+
+                    <rect x="340" y="268" width="162" height="50" rx="25" fill="url(#homeCapsule)" transform="rotate(-12 421 293)"/>
+                    <line x1="421" y1="245" x2="421" y2="342" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 421 293)"/>
+
+                    <rect x="286" y="122" width="58" height="152" rx="19" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="299" y="168" width="32" height="74" rx="11" fill="url(#homeLiquid)" opacity="0.92"/>
+                    <rect x="300" y="94" width="30" height="36" rx="9" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M88 386 C170 350, 300 412, 534 365" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+
+                <div class="visual-status">
+                    <div class="status-pill">
+                        <strong>GMP</strong>
+                        <span>Compliance</span>
+                    </div>
+                    <div class="status-pill">
+                        <strong>QA</strong>
+                        <span>Quality</span>
+                    </div>
+                    <div class="status-pill">
+                        <strong>AI</strong>
+                        <span>Adaptive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="section-header">
+            <span class="section-kicker">💊 Platform Features</span>
+            <h2>Built for pharmaceutical learning with professional training workflows.</h2>
+            <p>
+                The platform combines AI recommendations, gamification, and simulated smart
+                manufacturing scenarios to make training more practical and engaging.
+            </p>
+        </div>
+
+        <div class="home-feature-grid">
+            <article class="home-feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Personalization</h3>
+                <p>
+                    Recommends the next challenge based on user performance history,
+                    weak areas, and learning progress.
+                </p>
+            </article>
+
+            <article class="home-feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Gamification</h3>
+                <p>
+                    Uses points, badges, levels, streaks, skill progress, and leaderboards
+                    to make training more motivating.
+                </p>
+            </article>
+
+            <article class="home-feature-card">
+                <div class="feature-icon">🏭</div>
+                <h3>Smart Manufacturing</h3>
+                <p>
+                    Simulates process control, quality, maintenance, safety,
+                    packaging, and pharmaceutical production decisions.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="section-header">
+            <span class="section-kicker">⚕ Pharma Training Areas</span>
+            <h2>Designed around realistic pharmaceutical responsibilities.</h2>
+            <p>
+                Learners practice important decision areas that connect directly with
+                pharmaceutical manufacturing and quality operations.
+            </p>
+        </div>
+
+        <div class="workflow-grid">
+            <article class="workflow-card">
+                <div class="workflow-icon">🧪</div>
+                <h3>Quality Control</h3>
+                <p>Practice inspection, testing, and quality-focused decisions.</p>
+            </article>
+
+            <article class="workflow-card">
+                <div class="workflow-icon">📋</div>
+                <h3>GMP Compliance</h3>
+                <p>Improve documentation, procedure, and compliance awareness.</p>
+            </article>
+
+            <article class="workflow-card">
+                <div class="workflow-icon">💊</div>
+                <h3>Packaging Safety</h3>
+                <p>Handle packaging and labeling choices in simulated cases.</p>
+            </article>
+
+            <article class="workflow-card">
+                <div class="workflow-icon">✚</div>
+                <h3>Clinical Mindset</h3>
+                <p>Apply careful doctor-style thinking to pharma training tasks.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="home-cta">
+        <div>
+            <h2>Ready to start professional pharma training?</h2>
+            <p>
+                Create an account, enter the dashboard, and begin solving AI-guided
+                pharmaceutical manufacturing scenarios.
+            </p>
+        </div>
+
+        <div class="cta-actions">
+            <a class="home-primary-button" href="/register">Create Account</a>
+            <a class="home-secondary-button" href="/login">Login</a>
+        </div>
+    </section>
+</section>
+{% endblock %}

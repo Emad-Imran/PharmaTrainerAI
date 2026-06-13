@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {{ page_title if page_title else "PharmaTrainerAI" }}
+    </title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+
+<body>
+    <div class="pharma-shell">
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <nav class="top-nav">
+            <div class="nav-brand">
+                <a href="/">
+                    <span class="nav-logo-mark" aria-hidden="true">✚</span>
+                    <span class="nav-brand-text">
+                        <span class="nav-brand-name">PharmaTrainerAI</span>
+                        <span class="nav-brand-subtitle">AI Pharma Training</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="/" data-nav-link data-active-exact="/">🏠 Home</a>
+                <a href="/dashboard/1" data-nav-link data-active-prefix="/dashboard">📊 Dashboard</a>
+                <a href="/scenarios" data-nav-link data-active-prefix="/scenarios">💊 Scenarios</a>
+                <a href="/recommendation/1" data-nav-link data-active-prefix="/recommendation">🤖 AI Recommendation</a>
+                <a href="/profile/1" data-nav-link data-active-prefix="/profile">⚕ Profile</a>
+                <a href="/leaderboard" data-nav-link data-active-prefix="/leaderboard">🏆 Leaderboard</a>
+
+                <!-- API Docs hidden for now
+                <a href="/docs" data-nav-link data-active-prefix="/docs">📘 API Docs</a>
+                -->
+            </div>
+        </nav>
+
+        <main id="main-content" class="page-main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="base-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo" aria-hidden="true">⚕</div>
+                    <div>
+                        <h3>PharmaTrainerAI</h3>
+                        <p>
+                            AI-enhanced gamified pharmaceutical training for GMP, quality control,
+                            manufacturing decisions, and professional learning progress.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer-badges">
+                    <span class="footer-badge">💊 Pharma Scenarios</span>
+                    <span class="footer-badge">🧪 QC Training</span>
+                    <span class="footer-badge">✚ Clinical Style</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+            const navLinks = document.querySelectorAll("[data-nav-link]");
+
+            navLinks.forEach(function (link) {
+                const exact = link.getAttribute("data-active-exact");
+                const prefix = link.getAttribute("data-active-prefix");
+
+                let isActive = false;
+
+                if (exact) {
+                    isActive = currentPath === exact;
+                }
+
+                if (prefix) {
+                    isActive = currentPath === prefix || currentPath.startsWith(prefix + "/");
+                }
+
+                if (isActive) {
+                    link.classList.add("is-active");
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.classList.remove("is-active");
+                    link.removeAttribute("aria-current");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

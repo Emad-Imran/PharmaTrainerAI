@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PharmaTrainerAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body class="login-body">
+    <main class="login-page">
+        <section class="login-card" aria-label="Login form">
+            <div class="login-logo-row">
+                <div class="login-logo" aria-hidden="true">✚</div>
+                <div class="logo-text">
+                    <h1>PharmaTrainerAI</h1>
+                    <p>Clinical-grade learning access</p>
+                </div>
+            </div>
+
+            <span class="login-kicker">Doctor & pharma training portal</span>
+
+            <h2>Welcome back</h2>
+
+            <p class="login-description">
+                Sign in to continue your pharmaceutical training simulations, review your progress,
+                and access AI-guided learning recommendations.
+            </p>
+
+            {% if error %}
+                <div class="alert-box">{{ error }}</div>
+            {% endif %}
+
+            <form method="post" action="/login" class="auth-form">
+                <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <div class="input-shell">
+                        <span class="input-icon" aria-hidden="true">✉</span>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="name@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <div class="input-shell">
+                        <span class="input-icon" aria-hidden="true">🔒</span>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="login-options">
+                    <label class="check-row">
+                        <input type="checkbox" aria-label="Remember device">
+                        <span>Remember this device</span>
+                    </label>
+
+                    <span class="login-note">Secure trainee login</span>
+                </div>
+
+                <button type="submit" class="login-button">
+                    Login to Training Dashboard
+                </button>
+            </form>
+
+            <div class="login-trust-strip">
+                <div class="trust-item">GMP Training</div>
+                <div class="trust-item">AI Feedback</div>
+                <div class="trust-item">Progress Tracking</div>
+            </div>
+
+            <p class="small-link">
+                New user? <a href="/register">Create an account</a>
+            </p>
+        </section>
+
+        <section class="login-visual-panel" aria-label="Pharma training overview">
+            <div class="login-visual-content">
+                <span class="visual-pill">
+                    <span class="cross-mark">✚</span>
+                    Pharma skills intelligence
+                </span>
+
+                <h3>Professional training for high-stakes pharma decisions.</h3>
+
+                <p class="visual-copy">
+                    Continue practical simulations for quality assurance, manufacturing operations,
+                    deviation response, and compliance-focused decision making.
+                </p>
+
+                <div class="medical-dashboard">
+                    <div class="dashboard-top">
+                        <div class="dashboard-chip">⚕ Clinical-style interface</div>
+                        <div class="dashboard-chip">💊 Pharma learning path</div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="pharma-svg-card" aria-hidden="true">
+                            <svg viewBox="0 0 360 300" role="img">
+                                <defs>
+                                    <linearGradient id="capsuleRedBlue" x1="0" x2="1">
+                                        <stop offset="0%" stop-color="#ffffff"/>
+                                        <stop offset="50%" stop-color="#ffffff"/>
+                                        <stop offset="51%" stop-color="#e14658"/>
+                                        <stop offset="100%" stop-color="#e14658"/>
+                                    </linearGradient>
+
+                                    <linearGradient id="vialLiquid" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="#dffcff"/>
+                                        <stop offset="100%" stop-color="#22c1c3"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <rect x="40" y="218" width="280" height="28" rx="14" fill="rgba(255,255,255,0.20)"/>
+
+                                <rect x="70" y="82" width="72" height="154" rx="22" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.55)" stroke-width="3"/>
+                                <rect x="86" y="126" width="40" height="76" rx="13" fill="url(#vialLiquid)" opacity="0.95"/>
+                                <rect x="88" y="58" width="36" height="34" rx="10" fill="rgba(255,255,255,0.86)"/>
+
+                                <rect x="178" y="104" width="116" height="48" rx="24" fill="url(#capsuleRedBlue)" transform="rotate(-18 236 128)"/>
+                                <line x1="236" y1="86" x2="236" y2="170" stroke="rgba(7,29,53,0.14)" stroke-width="4" transform="rotate(-18 236 128)"/>
+
+                                <circle cx="246" cy="196" r="38" fill="rgba(225,70,88,0.16)" stroke="rgba(255,255,255,0.48)" stroke-width="3"/>
+                                <path d="M229 196h34M246 179v34" stroke="#ffb2bd" stroke-width="9" stroke-linecap="round"/>
+
+                                <path d="M56 262 C118 230, 190 286, 310 246" fill="none" stroke="rgba(216,255,245,0.44)" stroke-width="7" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
+                        <div class="dashboard-metrics">
+                            <div class="metric-card">
+                                <strong>QA</strong>
+                                <span>Quality assurance scenarios with decision-based learning.</span>
+                            </div>
+
+                            <div class="metric-card">
+                                <strong>GMP</strong>
+                                <span>Compliance practice designed for pharmaceutical workflows.</span>
+                            </div>
+
+                            <div class="metric-card">
+                                <strong>AI</strong>
+                                <span>Adaptive feedback for better training performance.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

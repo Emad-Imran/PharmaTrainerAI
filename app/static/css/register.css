@@ -1,0 +1,460 @@
+﻿:root {
+    --pharma-navy: #0b1f3a;
+    --pharma-blue: #0f6cbd;
+    --pharma-cyan: #22c1c3;
+    --pharma-green: #21a67a;
+    --pharma-mint: #e9fff7;
+    --pharma-bg: #f5f9fc;
+    --pharma-text: #243447;
+    --pharma-muted: #6b7a90;
+    --pharma-border: #dbe7ef;
+    --white: #ffffff;
+    --danger: #c0392b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.register-body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(34, 193, 195, 0.20), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(33, 166, 122, 0.18), transparent 30%),
+        linear-gradient(135deg, #f5fbff 0%, #eef8f5 45%, #f8fbff 100%);
+    color: var(--pharma-text);
+    overflow-x: hidden;
+}
+
+.register-page {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 34px;
+    align-items: center;
+    width: min(1180px, 94%);
+    margin: 0 auto;
+    padding: 42px 0;
+}
+
+.register-page::before,
+.register-page::after {
+    content: "";
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border-radius: 999px;
+    filter: blur(4px);
+    opacity: 0.18;
+    z-index: -1;
+}
+
+.register-page::before {
+    left: -80px;
+    bottom: 8%;
+    background: var(--pharma-cyan);
+}
+
+.register-page::after {
+    right: -90px;
+    top: 8%;
+    background: var(--pharma-green);
+}
+
+.register-brand-panel {
+    min-height: 650px;
+    padding: 42px;
+    border-radius: 34px;
+    background:
+        linear-gradient(145deg, rgba(11, 31, 58, 0.96), rgba(15, 108, 189, 0.92)),
+        linear-gradient(135deg, var(--pharma-navy), var(--pharma-blue));
+    color: var(--white);
+    box-shadow: 0 28px 80px rgba(11, 31, 58, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.register-brand-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: 0.45;
+}
+
+.register-brand-content {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 58px;
+}
+
+.brand-logo {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 0 24px rgba(255,255,255,0.08);
+    font-size: 26px;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+    margin: 3px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border-radius: 999px;
+    background: rgba(233, 255, 247, 0.13);
+    border: 1px solid rgba(233, 255, 247, 0.22);
+    color: #c9fff0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.register-brand-panel h1 {
+    margin: 22px 0 16px;
+    max-width: 620px;
+    color: var(--white);
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+}
+
+.hero-text {
+    max-width: 580px;
+    margin: 0 0 34px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.pharma-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.stat-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+}
+
+.stat-number {
+    display: block;
+    margin-bottom: 6px;
+    color: #d8fff5;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.pharma-illustration {
+    position: relative;
+    width: min(430px, 100%);
+    margin-top: 46px;
+    padding: 26px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+}
+
+.pharma-illustration svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.register-card-wrap {
+    position: relative;
+}
+
+.register-card {
+    padding: 42px;
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(219, 231, 239, 0.95);
+    box-shadow: 0 26px 70px rgba(36, 52, 71, 0.14);
+    backdrop-filter: blur(16px);
+}
+
+.form-header {
+    margin-bottom: 28px;
+}
+
+.form-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+    border-radius: 999px;
+    background: #eaf7ff;
+    color: var(--pharma-blue);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.register-card h2 {
+    margin: 0 0 10px;
+    color: var(--pharma-navy);
+    font-size: 36px;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+}
+
+.register-description {
+    margin: 0;
+    color: var(--pharma-muted);
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #fff1f0;
+    border: 1px solid #ffd4cf;
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.alert-box::before {
+    content: "!";
+    width: 22px;
+    height: 22px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--danger);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.auth-form {
+    display: grid;
+    gap: 17px;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field label {
+    color: var(--pharma-navy);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.input-shell {
+    position: relative;
+}
+
+.input-shell span {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--pharma-blue);
+    font-size: 17px;
+}
+
+.input-shell input {
+    width: 100%;
+    height: 54px;
+    padding: 0 16px 0 48px;
+    border: 1px solid var(--pharma-border);
+    border-radius: 16px;
+    outline: none;
+    background: #fbfdff;
+    color: var(--pharma-text);
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.input-shell input::placeholder {
+    color: #9aa8b8;
+    font-weight: 500;
+}
+
+.input-shell input:focus {
+    border-color: rgba(15, 108, 189, 0.65);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(15, 108, 189, 0.10);
+}
+
+.password-note {
+    margin: -4px 0 0;
+    color: #8190a4;
+    font-size: 12.5px;
+    line-height: 1.4;
+}
+
+.register-button {
+    width: 100%;
+    height: 56px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 17px;
+    background: linear-gradient(135deg, var(--pharma-blue), var(--pharma-green));
+    color: var(--white);
+    cursor: pointer;
+    font-size: 15.5px;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    box-shadow: 0 16px 34px rgba(15, 108, 189, 0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(15, 108, 189, 0.32);
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+.security-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.security-item {
+    padding: 12px 10px;
+    border-radius: 16px;
+    background: #f5fbf8;
+    border: 1px solid #dff1e9;
+    color: #3d5a50;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.small-link {
+    margin: 24px 0 0;
+    color: var(--pharma-muted);
+    text-align: center;
+    font-size: 14.5px;
+}
+
+.small-link a {
+    color: var(--pharma-blue);
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.small-link a:hover {
+    text-decoration: underline;
+}
+
+.top-login-link {
+    position: absolute;
+    right: 0;
+    top: -56px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 15px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(219, 231, 239, 0.95);
+    color: var(--pharma-navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    box-shadow: 0 12px 28px rgba(36, 52, 71, 0.10);
+}
+
+@media (max-width: 980px) {
+    .register-page {
+        grid-template-columns: 1fr;
+        padding: 24px 0;
+    }
+
+    .register-brand-panel {
+        min-height: auto;
+        padding: 32px;
+    }
+
+    .pharma-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .pharma-illustration {
+        display: none;
+    }
+
+    .top-login-link {
+        position: static;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 560px) {
+    .register-card,
+    .register-brand-panel {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .security-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .register-card h2 {
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,186 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/locked_level.css">
+
+<section class="locked-page">
+    <section class="locked-hero">
+        <div class="locked-hero-content">
+            <span class="locked-eyebrow">🔒 Level Locked</span>
+
+            <h1 class="locked-title">
+                {{ scenario.difficulty }} Level Is <span>Locked</span>
+            </h1>
+
+            <p class="locked-description">
+                You cannot access this pharmaceutical training scenario yet because the adaptive
+                learning path requires mastery of the previous level first.
+            </p>
+
+            <div class="locked-tags">
+                <span class="locked-tag">💊 Pharma Training Path</span>
+                <span class="locked-tag">⚕ Step-by-Step Progression</span>
+                <span class="locked-tag">🧪 GMP Skill Mastery</span>
+                <span class="locked-tag">🔒 Level Access Control</span>
+            </div>
+        </div>
+
+        <div class="locked-hero-visual">
+            <div class="locked-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 620 430" role="img">
+                    <defs>
+                        <linearGradient id="lockedCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="lockedLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="lockedPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="58" y="74" width="504" height="290" rx="38" fill="url(#lockedPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="98" y="122" width="190" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="98" y="172" width="226" height="22" rx="11" fill="rgba(216,255,245,0.52)"/>
+                    <rect x="98" y="214" width="172" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="98" y="256" width="206" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+
+                    <rect x="384" y="164" width="118" height="102" rx="24" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M410 164v-28c0-22 16-38 34-38s34 16 34 38v28" fill="none" stroke="#ffb7c0" stroke-width="12" stroke-linecap="round"/>
+                    <circle cx="443" cy="214" r="13" fill="#ffb7c0"/>
+                    <path d="M443 224v22" stroke="#ffb7c0" stroke-width="9" stroke-linecap="round"/>
+
+                    <circle cx="398" cy="304" r="44" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M376 304h44M398 282v44" stroke="#ffb7c0" stroke-width="11" stroke-linecap="round"/>
+
+                    <rect x="145" y="300" width="142" height="44" rx="22" fill="url(#lockedCapsule)" transform="rotate(-12 216 322)"/>
+                    <line x1="216" y1="302" x2="216" y2="342" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 216 322)"/>
+
+                    <rect x="315" y="284" width="54" height="78" rx="16" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="328" y="310" width="28" height="36" rx="10" fill="url(#lockedLiquid)" opacity="0.92"/>
+                    <rect x="329" y="266" width="26" height="26" rx="8" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M88 394 C170 358, 300 420, 534 373" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="locked-alert-strip">
+        <article class="alert-card">
+            <div class="alert-icon">🔒</div>
+            <h3>Access Restricted</h3>
+            <p>
+                This level is locked until the required previous pharmaceutical training level is mastered.
+            </p>
+        </article>
+
+        <article class="alert-card">
+            <div class="alert-icon">🧪</div>
+            <h3>Mastery Required</h3>
+            <p>
+                Complete available scenarios first to improve your GMP, QC, and pharma decision skills.
+            </p>
+        </article>
+
+        <article class="alert-card">
+            <div class="alert-icon">⚕</div>
+            <h3>Adaptive Learning</h3>
+            <p>
+                The system unlocks levels step by step to keep your training pathway professional.
+            </p>
+        </article>
+    </section>
+
+    <section class="locked-layout">
+        <section class="locked-panel">
+            <span class="section-badge">📋 Why Is This Locked?</span>
+
+            <h2>Level access explanation</h2>
+
+            <p>
+                PharmaTrainerAI uses a structured learning pathway. Higher-level scenarios stay locked
+                until the user demonstrates enough progress in earlier levels.
+            </p>
+
+            <div class="lock-reason-box">
+                <strong>System Message</strong>
+                <p>{{ locked_message }}</p>
+            </div>
+        </section>
+
+        <section class="progress-panel">
+            <span class="section-badge">📊 Your Current Progress</span>
+
+            <h2>Training mastery status</h2>
+
+            <p>
+                Review your current unlocked level and training progress before returning to available scenarios.
+            </p>
+
+            <div class="current-level-box">
+                <strong>Current Level</strong>
+                <p>{{ mastery_status.current_level }}</p>
+            </div>
+
+            <div class="progress-list">
+                <div class="progress-item">
+                    <div class="progress-icon">🟢</div>
+                    <div>
+                        <strong>Beginner Progress</strong>
+                        <span>{{ mastery_status.beginner_progress }}</span>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-icon">🔵</div>
+                    <div>
+                        <strong>Intermediate Progress</strong>
+                        <span>{{ mastery_status.intermediate_progress }}</span>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-icon">🔴</div>
+                    <div>
+                        <strong>Advanced Progress</strong>
+                        <span>{{ mastery_status.advanced_progress }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="actions-panel">
+        <span class="section-badge">✚ Continue Training</span>
+
+        <h2>Return to available pharmaceutical scenarios</h2>
+
+        <p>
+            Continue the unlocked scenarios first. After completing the required level,
+            this locked training stage will become available automatically.
+        </p>
+
+        <div class="actions">
+            <a class="primary-button" href="/scenarios">Back to Available Scenarios</a>
+        </div>
+
+        <div class="professional-note">
+            <strong>Professional Training Note</strong>
+            <p>
+                Locked levels help keep the training pathway realistic: basic GMP and QC decisions
+                should be mastered before advanced pharmaceutical manufacturing challenges.
+            </p>
+        </div>
+    </section>
+</section>
+{% endblock %}

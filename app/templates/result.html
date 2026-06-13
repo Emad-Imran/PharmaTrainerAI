@@ -1,0 +1,309 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/result.css">
+
+<section class="result-page">
+    <section class="result-hero">
+        <div class="result-hero-content">
+            <span class="result-eyebrow">📋 Scenario Result</span>
+
+            {% if attempt.is_correct %}
+                <h1 class="result-title">
+                    Correct <span>Pharma Decision</span>
+                </h1>
+
+                <p class="result-description">
+                    Great work. Your selected response matched the correct pharmaceutical decision
+                    for this training scenario.
+                </p>
+            {% else %}
+                <h1 class="result-title">
+                    Decision Needs <span class="danger-highlight">Review</span>
+                </h1>
+
+                <p class="result-description">
+                    Your selected response was not correct. Review the explanation, weak area,
+                    learning hint, and research reference before continuing.
+                </p>
+            {% endif %}
+
+            <div class="scenario-name">
+                💊 Scenario: <strong>{{ scenario.title }}</strong>
+            </div>
+
+            <div class="result-tags">
+                <span class="result-tag">⚕ Clinical-Style Feedback</span>
+                <span class="result-tag">🧪 GMP Learning Review</span>
+                <span class="result-tag">📊 Mastery Tracking</span>
+                <span class="result-tag">🤖 AI Training Pathway</span>
+            </div>
+        </div>
+
+        <div class="result-hero-visual">
+            <div class="result-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 620 430" role="img">
+                    <defs>
+                        <linearGradient id="resultCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="resultLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="resultPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="58" y="74" width="504" height="290" rx="38" fill="url(#resultPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="98" y="118" width="190" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="98" y="170" width="226" height="22" rx="11" fill="rgba(216,255,245,0.52)"/>
+                    <rect x="98" y="212" width="172" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="98" y="254" width="206" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+
+                    {% if attempt.is_correct %}
+                        <circle cx="420" cy="178" r="66" fill="rgba(33,166,122,0.20)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                        <path d="M388 178l22 22 46-54" fill="none" stroke="#bfffe7" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    {% else %}
+                        <circle cx="420" cy="178" r="66" fill="rgba(225,70,88,0.20)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                        <path d="M392 150l56 56M448 150l-56 56" fill="none" stroke="#ffb7c0" stroke-width="14" stroke-linecap="round"/>
+                    {% endif %}
+
+                    <rect x="396" y="270" width="142" height="44" rx="22" fill="url(#resultCapsule)" transform="rotate(-12 467 292)"/>
+                    <line x1="467" y1="272" x2="467" y2="312" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 467 292)"/>
+
+                    <rect x="126" y="300" width="56" height="74" rx="16" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="139" y="324" width="30" height="34" rx="10" fill="url(#resultLiquid)" opacity="0.92"/>
+                    <rect x="140" y="282" width="28" height="26" rx="8" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M88 394 C170 358, 300 420, 534 373" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="result-metrics">
+        <article class="result-metric-card score">
+            <div class="metric-top">
+                <p class="metric-label">Score</p>
+                <div class="metric-icon">📊</div>
+            </div>
+            <p class="metric-value">{{ attempt.score }} / 100</p>
+            <p class="metric-subtitle">
+                Scenario performance score for this pharmaceutical decision attempt.
+            </p>
+        </article>
+
+        <article class="result-metric-card points">
+            <div class="metric-top">
+                <p class="metric-label">Points Earned</p>
+                <div class="metric-icon">🏆</div>
+            </div>
+            <p class="metric-value">+{{ attempt.points_earned }}</p>
+            <p class="metric-subtitle">
+                Points added to your PharmaTrainerAI learning profile.
+            </p>
+        </article>
+
+        <article class="result-metric-card option">
+            <div class="metric-top">
+                <p class="metric-label">Selected Option</p>
+                <div class="metric-icon">💊</div>
+            </div>
+            <p class="metric-value">{{ attempt.selected_option }}</p>
+            <p class="metric-subtitle">
+                The answer option selected during this training scenario.
+            </p>
+        </article>
+    </section>
+
+    <section class="result-layout">
+        <div class="result-column">
+            <section class="result-panel">
+                <span class="section-badge success">✅ Correct Answer Review</span>
+
+                <h2>Professional answer explanation</h2>
+
+                <p class="panel-text">
+                    Compare your selected option with the correct answer and review the explanation
+                    to strengthen your pharmaceutical decision-making skills.
+                </p>
+
+                <div class="answer-box">
+                    <strong>Correct Answer</strong>
+                    <span class="answer-option">Option {{ attempt.correct_option }}</span>
+
+                    <strong>Explanation</strong>
+                    <p class="answer-explanation">{{ scenario.explanation }}</p>
+                </div>
+            </section>
+
+            {% if not attempt.is_correct %}
+                <section class="result-panel weak-area-panel">
+                    <span class="section-badge">⚠ Weak Area Detected</span>
+
+                    <h2>Review before moving forward</h2>
+
+                    <p class="panel-text">
+                        This area needs more practice before you continue to more difficult
+                        pharmaceutical training scenarios.
+                    </p>
+
+                    <div class="weak-box">
+                        <div class="weak-item">
+                            <strong>Weak Area</strong>
+                            <p>{{ scenario.weak_area }}</p>
+                        </div>
+
+                        <div class="weak-item">
+                            <strong>Learning Hint</strong>
+                            <p>{{ scenario.learning_hint }}</p>
+                        </div>
+
+                        <div class="weak-item">
+                            <strong>Suggested Research Reference</strong>
+                            <p>{{ scenario.research_reference }}</p>
+                        </div>
+
+                        <div class="weak-item">
+                            <strong>Recommended Review</strong>
+                            <p>
+                                Before moving forward, review this concept and try another
+                                scenario from the same level or category.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </div>
+
+        <div class="result-column">
+            <section class="result-panel">
+                <span class="section-badge info">📊 Mastery Progress</span>
+
+                <h2>Updated learning progress</h2>
+
+                <p class="panel-text">
+                    Your mastery status updates after each scenario attempt and helps the system
+                    control level progression.
+                </p>
+
+                <div class="mastery-list">
+                    <div class="mastery-item">
+                        <div class="mastery-icon">⚕</div>
+                        <div>
+                            <strong>Current Learning Level</strong>
+                            <span>{{ mastery_status.current_level }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mastery-item">
+                        <div class="mastery-icon">🟢</div>
+                        <div>
+                            <strong>Beginner Progress</strong>
+                            <span>{{ mastery_status.beginner_progress }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mastery-item">
+                        <div class="mastery-icon">🔵</div>
+                        <div>
+                            <strong>Intermediate Progress</strong>
+                            <span>{{ mastery_status.intermediate_progress }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mastery-item">
+                        <div class="mastery-icon">🔴</div>
+                        <div>
+                            <strong>Advanced Progress</strong>
+                            <span>{{ mastery_status.advanced_progress }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mastery-item">
+                        <div class="mastery-icon">📋</div>
+                        <div>
+                            <strong>Performance Summary</strong>
+                            <span>{{ mastery_status.mastery_message }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-action-box">
+                    <strong>Next Action</strong>
+                    <p>{{ mastery_status.next_action }}</p>
+                </div>
+            </section>
+
+            <section class="result-panel">
+                <span class="section-badge">👤 Updated Training Profile</span>
+
+                <h2>Your current profile stats</h2>
+
+                <p class="panel-text">
+                    These profile values reflect your latest pharmaceutical training progress.
+                </p>
+
+                <div class="profile-list">
+                    <div class="profile-item">
+                        <div class="profile-icon">🏆</div>
+                        <div>
+                            <strong>Total Points</strong>
+                            <span>{{ user.total_points }}</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-item">
+                        <div class="profile-icon">⚕</div>
+                        <div>
+                            <strong>Current Level</strong>
+                            <span>{{ user.current_level }}</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-item">
+                        <div class="profile-icon">🔥</div>
+                        <div>
+                            <strong>Current Streak</strong>
+                            <span>{{ user.current_streak }} correct answer(s)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="actions-panel">
+        <span class="section-badge">✚ Continue Training</span>
+
+        <h2>Choose your next step</h2>
+
+        <p class="panel-text">
+            Continue with an ML recommendation, try another scenario, or review your profile progress.
+        </p>
+
+        <div class="actions">
+            <a class="primary-button" href="/recommendation/{{ user.id }}">View ML Recommendation</a>
+            <a class="secondary-button" href="/scenarios">Try Another Scenario</a>
+            <a class="secondary-button" href="/profile/{{ user.id }}">My Profile</a>
+        </div>
+
+        <div class="professional-note">
+            <strong>Professional Training Note</strong>
+            <p>
+                Treat each result as feedback from a real pharma training supervisor:
+                review your decision, understand the explanation, and continue practicing safely.
+            </p>
+        </div>
+    </section>
+</section>
+{% endblock %}

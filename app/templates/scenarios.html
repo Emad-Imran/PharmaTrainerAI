@@ -1,0 +1,191 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/scenarios.css">
+
+<section class="scenarios-page">
+    <section class="scenarios-hero">
+        <div class="scenarios-hero-content">
+            <span class="scenarios-eyebrow">✚ Adaptive Pharma Training Path</span>
+
+            <h1 class="scenarios-title">
+                Pharmaceutical Manufacturing <span>Training Levels</span>
+            </h1>
+
+            <p class="scenarios-description">
+                Progress through structured Beginner, Intermediate, and Advanced pharmaceutical
+                scenarios. Each training case strengthens GMP awareness, quality control judgment,
+                safety response, and manufacturing decision-making.
+            </p>
+
+            <div class="scenario-hero-tags">
+                <span class="scenario-hero-tag">💊 Scenario-Based Learning</span>
+                <span class="scenario-hero-tag">⚕ Doctor-Style Interface</span>
+                <span class="scenario-hero-tag">🧪 QC & GMP Practice</span>
+                <span class="scenario-hero-tag">🏭 Manufacturing Decisions</span>
+            </div>
+        </div>
+
+        <div class="scenarios-hero-visual">
+            <div class="scenario-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 600 420" role="img">
+                    <defs>
+                        <linearGradient id="scenarioCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="scenarioLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="scenarioPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="52" y="72" width="496" height="276" rx="38" fill="url(#scenarioPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="88" y="106" width="168" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="88" y="158" width="210" height="22" rx="11" fill="rgba(216,255,245,0.55)"/>
+                    <rect x="88" y="200" width="160" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="88" y="242" width="195" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+
+                    <circle cx="420" cy="158" r="68" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M388 158h64M420 126v64" stroke="#ffb7c0" stroke-width="15" stroke-linecap="round"/>
+
+                    <rect x="344" y="260" width="150" height="48" rx="24" fill="url(#scenarioCapsule)" transform="rotate(-12 419 284)"/>
+                    <line x1="419" y1="238" x2="419" y2="330" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 419 284)"/>
+
+                    <rect x="294" y="126" width="56" height="144" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="307" y="168" width="30" height="70" rx="10" fill="url(#scenarioLiquid)" opacity="0.92"/>
+                    <rect x="308" y="100" width="28" height="34" rx="9" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M82 376 C170 338, 300 400, 520 354" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-panel">
+        <div class="progress-summary">
+            <span class="section-badge">📊 Current Progress</span>
+
+            <h2>Training mastery status</h2>
+
+            <p>
+                Your unlocked level is based on your current mastery progress.
+                Continue completing available pharmaceutical scenarios to unlock higher levels.
+            </p>
+
+            <div class="current-level-card">
+                <div class="current-level-icon">⚕</div>
+                <div>
+                    <strong>Current Unlocked Level</strong>
+                    <span>{{ mastery_status.current_level }}</span>
+                </div>
+            </div>
+
+            {% if mastery_status.industry_unlocked %}
+                <div class="industry-unlocked">
+                    <strong>🏭 Industry Exposure Unlocked</strong>
+                    <p>
+                        You have unlocked advanced industry exposure content after progressing
+                        through the training pathway.
+                    </p>
+
+                    <div class="actions">
+                        <a class="primary-button" href="/industry-exposure/1">View Industry Exposure</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="progress-details">
+            <span class="section-badge">💊 Level Breakdown</span>
+
+            <h2>Learning path overview</h2>
+
+            <div class="progress-grid">
+                <div class="progress-item beginner">
+                    <div class="progress-item-icon">🧪</div>
+                    <strong>Beginner</strong>
+                    <span>{{ mastery_status.beginner_progress }}</span>
+                </div>
+
+                <div class="progress-item intermediate">
+                    <div class="progress-item-icon">💊</div>
+                    <strong>Intermediate</strong>
+                    <span>{{ mastery_status.intermediate_progress }}</span>
+                </div>
+
+                <div class="progress-item advanced">
+                    <div class="progress-item-icon">✚</div>
+                    <strong>Advanced</strong>
+                    <span>{{ mastery_status.advanced_progress }}</span>
+                </div>
+
+                <div class="progress-item next">
+                    <div class="progress-item-icon">🎯</div>
+                    <strong>Next Action</strong>
+                    <span>{{ mastery_status.next_action }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="scenarios-toolbar">
+        <div>
+            <span class="section-badge">🏭 Scenario Library</span>
+            <h2>Available pharmaceutical challenges</h2>
+            <p>
+                Select an unlocked scenario and begin solving practical pharma manufacturing,
+                GMP, QC, safety, and packaging decisions.
+            </p>
+        </div>
+
+        <div class="scenario-count-pill">
+            💊 Training cases
+        </div>
+    </section>
+
+    {% if scenarios %}
+        <div class="scenario-list">
+            {% for scenario in scenarios %}
+                {% set is_unlocked = mastery_status.industry_unlocked or scenario.level_order == mastery_status.unlocked_level_order %}
+
+                <article class="scenario-card {% if not is_unlocked %}locked-card{% endif %}">
+                    <div>
+                        <div class="card-top-row">
+                            <span class="level-tag">⚕ {{ scenario.difficulty }} Level</span>
+                            <span class="category-tag">🧪 {{ scenario.category }}</span>
+                        </div>
+
+                        <h3>{{ scenario.title }}</h3>
+                        <p>{{ scenario.description }}</p>
+                    </div>
+
+                    <div class="scenario-footer">
+                        <strong class="reward-points">🏆 {{ scenario.reward_points }} points</strong>
+
+                        {% if is_unlocked %}
+                            <a class="primary-button" href="/scenarios/{{ scenario.id }}?user_id={{ user_id }}">Start Scenario</a>
+                        {% else %}
+                            <span class="locked-label">Locked</span>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h3>No scenarios available yet</h3>
+            <p>Scenario content will appear here after the training cases are loaded.</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

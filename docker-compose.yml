@@ -1,0 +1,24 @@
+﻿services:
+  core_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pharmatrainerai_core_app
+    ports:
+      - "8001:8001"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      DATABASE_URL: "sqlite:///:memory:"
+      ML_SERVICE_URL: "http://ml_service:9000"
+    depends_on:
+      - ml_service
+
+  ml_service:
+    build:
+      context: ./ml_service
+      dockerfile: Dockerfile
+    container_name: pharmatrainerai_ml_service
+    ports:
+      - "9000:9000"
+    environment:
+      PYTHONUNBUFFERED: "1"

@@ -1,0 +1,189 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/scenario_detail.css">
+
+<section class="scenario-detail-page">
+    <section class="detail-hero">
+        <div class="detail-hero-content">
+            <span class="detail-eyebrow">✚ {{ category_info.display_label }}</span>
+
+            <h1 class="detail-title">{{ scenario.title }}</h1>
+
+            <p class="detail-description">
+                {{ scenario.description }}
+            </p>
+
+            <div class="detail-tags">
+                <span class="detail-tag">⚕ {{ scenario.difficulty }} Level</span>
+                <span class="detail-tag">💊 {{ scenario.category }}</span>
+                <span class="detail-tag">🧪 {{ scenario.weak_area }}</span>
+                <span class="detail-tag">🏆 {{ scenario.reward_points }} Points</span>
+            </div>
+        </div>
+
+        <div class="detail-hero-visual">
+            <div class="detail-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 600 420" role="img">
+                    <defs>
+                        <linearGradient id="detailCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="detailLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="detailPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="52" y="72" width="496" height="276" rx="38" fill="url(#detailPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="88" y="106" width="174" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="88" y="158" width="212" height="22" rx="11" fill="rgba(216,255,245,0.55)"/>
+                    <rect x="88" y="200" width="165" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="88" y="242" width="196" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+
+                    <circle cx="420" cy="158" r="68" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M388 158h64M420 126v64" stroke="#ffb7c0" stroke-width="15" stroke-linecap="round"/>
+
+                    <rect x="344" y="260" width="150" height="48" rx="24" fill="url(#detailCapsule)" transform="rotate(-12 419 284)"/>
+                    <line x1="419" y1="238" x2="419" y2="330" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 419 284)"/>
+
+                    <rect x="294" y="126" width="56" height="144" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="307" y="168" width="30" height="70" rx="10" fill="url(#detailLiquid)" opacity="0.92"/>
+                    <rect x="308" y="100" width="28" height="34" rx="9" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M82 376 C170 338, 300 400, 520 354" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-layout">
+        <div class="info-column">
+            <section class="detail-card">
+                <span class="section-badge">📋 Training Level Information</span>
+
+                <h2>Scenario briefing</h2>
+
+                <p>
+                    Review the simulated pharmaceutical context before submitting your decision.
+                    This challenge focuses on the selected skill area and difficulty level.
+                </p>
+
+                <div class="training-info-grid">
+                    <div class="training-info-item">
+                        <div class="training-info-icon">⚕</div>
+                        <div>
+                            <strong>Current Level</strong>
+                            <span>{{ scenario.difficulty }}</span>
+                        </div>
+                    </div>
+
+                    <div class="training-info-item">
+                        <div class="training-info-icon">🧪</div>
+                        <div>
+                            <strong>Target Skill Area</strong>
+                            <span>{{ scenario.weak_area }}</span>
+                        </div>
+                    </div>
+
+                    <div class="training-info-item">
+                        <div class="training-info-icon">💊</div>
+                        <div>
+                            <strong>Category Focus</strong>
+                            <span>{{ category_info.focus_area }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detail-card">
+                <span class="section-badge">🏭 Simulated Process Parameters</span>
+
+                <h2>Pharma process snapshot</h2>
+
+                <p>
+                    These process parameters describe the simulated pharmaceutical manufacturing
+                    or quality environment for this decision challenge.
+                </p>
+
+                <div class="parameter-grid">
+                    {% for parameter in parameter_items %}
+                        <div class="parameter-item">{{ parameter }}</div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="detail-card">
+                <span class="section-badge">💡 Learning Support</span>
+
+                <div class="hint-box">
+                    <strong>Learning Hint</strong>
+                    <p>{{ scenario.learning_hint }}</p>
+                </div>
+
+                <br>
+
+                <div class="reference-box">
+                    <strong>Research Reference</strong>
+                    <p>{{ scenario.research_reference }}</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="challenge-column">
+            <section class="detail-card question-card">
+                <span class="section-badge">🎯 Decision Challenge</span>
+
+                <h2>Select the best professional response</h2>
+
+                <p class="question-text">{{ scenario.question }}</p>
+
+                <form method="post" action="/scenarios/{{ scenario.id }}/attempt" class="decision-form">
+                    <input type="hidden" name="user_id" value="1">
+
+                    <div class="options-grid">
+                        <label class="option-row">
+                            <input type="radio" name="selected_option" value="A" required>
+                            <span class="option-letter">A</span>
+                            <span class="option-text">{{ scenario.option_a }}</span>
+                        </label>
+
+                        <label class="option-row">
+                            <input type="radio" name="selected_option" value="B" required>
+                            <span class="option-letter">B</span>
+                            <span class="option-text">{{ scenario.option_b }}</span>
+                        </label>
+
+                        <label class="option-row">
+                            <input type="radio" name="selected_option" value="C" required>
+                            <span class="option-letter">C</span>
+                            <span class="option-text">{{ scenario.option_c }}</span>
+                        </label>
+
+                        <label class="option-row">
+                            <input type="radio" name="selected_option" value="D" required>
+                            <span class="option-letter">D</span>
+                            <span class="option-text">{{ scenario.option_d }}</span>
+                        </label>
+                    </div>
+
+                    <div class="actions">
+                        <button class="primary-button" type="submit">Submit Pharma Decision</button>
+                        <a class="secondary-button" href="/scenarios">Back to Scenarios</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+</section>
+{% endblock %}

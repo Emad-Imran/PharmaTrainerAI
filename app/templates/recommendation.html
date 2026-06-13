@@ -1,0 +1,183 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/recommendation.css">
+
+<section class="recommendation-page">
+    <section class="recommendation-hero">
+        <div class="recommendation-hero-content">
+            <span class="rec-eyebrow">🤖 ML-Based AI Recommendation Engine</span>
+
+            <h1 class="rec-title">
+                Recommended Next <span>Pharma Challenge</span>
+            </h1>
+
+            <p class="rec-description">
+                The system analyzed your training history and used an intelligent recommendation
+                model to suggest the most suitable next pharmaceutical training challenge.
+            </p>
+
+            <div class="rec-tags">
+                <span class="rec-tag">💊 Adaptive Pharma Learning</span>
+                <span class="rec-tag">⚕ Clinical-Style Decision Support</span>
+                <span class="rec-tag">🧪 QC & GMP Skill Tracking</span>
+                <span class="rec-tag">📊 Performance-Based Suggestion</span>
+            </div>
+        </div>
+
+        <div class="recommendation-hero-visual">
+            <div class="rec-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 600 420" role="img">
+                    <defs>
+                        <linearGradient id="recCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="recLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="recPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="52" y="72" width="496" height="276" rx="38" fill="url(#recPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="88" y="106" width="174" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="88" y="158" width="212" height="22" rx="11" fill="rgba(216,255,245,0.55)"/>
+                    <rect x="88" y="200" width="165" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="88" y="242" width="196" height="22" rx="11" fill="rgba(255,255,255,0.18)"/>
+
+                    <circle cx="420" cy="158" r="68" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M388 158h64M420 126v64" stroke="#ffb7c0" stroke-width="15" stroke-linecap="round"/>
+
+                    <rect x="344" y="260" width="150" height="48" rx="24" fill="url(#recCapsule)" transform="rotate(-12 419 284)"/>
+                    <line x1="419" y1="238" x2="419" y2="330" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 419 284)"/>
+
+                    <rect x="294" y="126" width="56" height="144" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="307" y="168" width="30" height="70" rx="10" fill="url(#recLiquid)" opacity="0.92"/>
+                    <rect x="308" y="100" width="28" height="34" rx="9" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M82 376 C170 338, 300 400, 520 354" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="recommendation-layout">
+        <div>
+            <section class="recommendation-card">
+                <span class="section-badge">🎯 Recommended Next Challenge</span>
+
+                <h2>{{ scenario.title }}</h2>
+
+                <p class="panel-text">
+                    This training recommendation was generated from your performance profile,
+                    recent attempts, skill scores, and current learning progress.
+                </p>
+
+                <div class="recommended-scenario-box">
+                    <h3>{{ scenario.title }}</h3>
+
+                    <div class="recommendation-grid">
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">💊</div>
+                            <div>
+                                <strong>Recommended Category</strong>
+                                <span>{{ recommendation.recommended_category }}</span>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">⚕</div>
+                            <div>
+                                <strong>Predicted Difficulty</strong>
+                                <span>{{ recommendation.recommended_difficulty }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reason-box">
+                        <strong>ML Recommendation Reason</strong>
+                        <p>{{ recommendation.reason }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ml-card" style="margin-top: 24px;">
+                <span class="section-badge">🧠 How The ML Recommendation Works</span>
+
+                <h2>Performance-based learning intelligence</h2>
+
+                <p class="panel-text">
+                    The recommendation model evaluates user performance signals to estimate the
+                    best next challenge level for continued pharmaceutical skill development.
+                </p>
+
+                <div class="ml-steps">
+                    <div class="ml-step">
+                        <div class="ml-step-number">01</div>
+                        <div>
+                            <strong>Training history analysis</strong>
+                            <span>Reviews previous attempts, correct rate, latest score, and total activity.</span>
+                        </div>
+                    </div>
+
+                    <div class="ml-step">
+                        <div class="ml-step-number">02</div>
+                        <div>
+                            <strong>Skill and difficulty estimation</strong>
+                            <span>Uses current streak, current difficulty, and weak areas to estimate readiness.</span>
+                        </div>
+                    </div>
+
+                    <div class="ml-step">
+                        <div class="ml-step-number">03</div>
+                        <div>
+                            <strong>Next scenario selection</strong>
+                            <span>Suggests a suitable pharma challenge for steady learning improvement.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ml-feature-strip">
+                    <div class="ml-feature">Average Score</div>
+                    <div class="ml-feature">Correct Rate</div>
+                    <div class="ml-feature">Current Streak</div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="actions-card">
+            <span class="section-badge">✚ Training Actions</span>
+
+            <h2>Continue your pharma pathway</h2>
+
+            <p class="panel-text">
+                Start the recommended scenario now or return to your profile/dashboard to review
+                your learning progress.
+            </p>
+
+            <div class="actions">
+                <a class="primary-button" href="/scenarios/{{ scenario.id }}">Start Recommended Challenge</a>
+                <a class="secondary-button" href="/profile/{{ user.id }}">Back to Profile</a>
+                <a class="secondary-button" href="/dashboard/{{ user.id }}">Back to Dashboard</a>
+            </div>
+
+            <div class="professional-note">
+                <strong>Professional Training Note</strong>
+                <p>
+                    Treat each recommended challenge like a real pharmaceutical decision:
+                    review the situation, identify risk, and choose the safest compliant response.
+                </p>
+            </div>
+        </aside>
+    </section>
+</section>
+{% endblock %}

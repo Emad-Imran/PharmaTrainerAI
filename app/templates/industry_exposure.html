@@ -1,0 +1,226 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/industry_exposure.css">
+
+<section class="industry-page">
+    <section class="industry-hero">
+        <div class="industry-hero-content">
+            <span class="industry-eyebrow">🏭 Industry Exposure Unlocked</span>
+
+            <h1 class="industry-title">
+                You Are Ready for <span>Industry-Oriented Training</span>
+            </h1>
+
+            <p class="industry-description">
+                You have completed Beginner, Intermediate, and Advanced learning levels.
+                The system now recommends specialization areas in pharmaceutical manufacturing,
+                GMP operations, quality control, safety, and industry department exposure.
+            </p>
+
+            <div class="industry-tags">
+                <span class="industry-tag">💊 Pharmaceutical Manufacturing</span>
+                <span class="industry-tag">⚕ Clinical-Style Readiness</span>
+                <span class="industry-tag">🧪 QC & GMP Exposure</span>
+                <span class="industry-tag">🏭 Industry Department Matching</span>
+            </div>
+        </div>
+
+        <div class="industry-hero-visual">
+            <div class="industry-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 620 430" role="img">
+                    <defs>
+                        <linearGradient id="industryCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="industryLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="industryPanel" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="58" y="74" width="504" height="290" rx="38" fill="url(#industryPanel)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <rect x="98" y="122" width="86" height="158" rx="18" fill="rgba(255,255,255,0.17)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+                    <rect x="212" y="94" width="92" height="186" rx="20" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.40)" stroke-width="3"/>
+                    <rect x="334" y="142" width="82" height="138" rx="18" fill="rgba(255,255,255,0.17)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+
+                    <path d="M84 280 H486" stroke="rgba(216,255,245,0.45)" stroke-width="8" stroke-linecap="round"/>
+
+                    <circle cx="470" cy="134" r="46" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M448 134h44M470 112v44" stroke="#ffb7c0" stroke-width="11" stroke-linecap="round"/>
+
+                    <rect x="402" y="242" width="142" height="44" rx="22" fill="url(#industryCapsule)" transform="rotate(-12 473 264)"/>
+                    <line x1="473" y1="222" x2="473" y2="306" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 473 264)"/>
+
+                    <rect x="126" y="300" width="56" height="74" rx="16" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="139" y="324" width="30" height="34" rx="10" fill="url(#industryLiquid)" opacity="0.92"/>
+                    <rect x="140" y="282" width="28" height="26" rx="8" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M88 394 C170 358, 300 420, 534 373" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="industry-unlocked-strip">
+        <article class="unlock-card">
+            <div class="unlock-icon">✅</div>
+            <h3>Levels Completed</h3>
+            <p>
+                Beginner, Intermediate, and Advanced learning stages have been completed successfully.
+            </p>
+        </article>
+
+        <article class="unlock-card">
+            <div class="unlock-icon">🏭</div>
+            <h3>Industry Path Ready</h3>
+            <p>
+                You are now ready to explore professional pharmaceutical department pathways.
+            </p>
+        </article>
+
+        <article class="unlock-card">
+            <div class="unlock-icon">⚕</div>
+            <h3>Professional Focus</h3>
+            <p>
+                The next stage connects training performance with real pharma industry responsibilities.
+            </p>
+        </article>
+    </section>
+
+    <section class="industry-section">
+        <div class="section-header">
+            <div>
+                <span class="section-badge">💊 Recommended Industry Departments</span>
+
+                <h2>Specialization areas for pharma careers</h2>
+
+                <p>
+                    Based on your completed training pathway, these departments are suitable next
+                    exposure areas in pharmaceutical manufacturing and industrial operations.
+                </p>
+            </div>
+
+            <div class="industry-pill">
+                🧪 Pharma department matching
+            </div>
+        </div>
+
+        <div class="department-grid">
+            <article class="department-card">
+                <div class="department-icon">🧪</div>
+                <h3>Quality Control</h3>
+                <p>
+                    Suitable for roles involving inspection, defect analysis,
+                    testing review, and batch quality monitoring.
+                </p>
+            </article>
+
+            <article class="department-card">
+                <div class="department-icon">⚙️</div>
+                <h3>Process Control</h3>
+                <p>
+                    Suitable for roles involving process monitoring, deviation response,
+                    production stability, and controlled manufacturing decisions.
+                </p>
+            </article>
+
+            <article class="department-card">
+                <div class="department-icon">🔧</div>
+                <h3>Predictive Maintenance</h3>
+                <p>
+                    Suitable for roles involving equipment monitoring, vibration alerts,
+                    maintenance planning, and operational reliability.
+                </p>
+            </article>
+
+            <article class="department-card">
+                <div class="department-icon">✚</div>
+                <h3>Safety and Compliance</h3>
+                <p>
+                    Suitable for roles involving GMP awareness, contamination risk handling,
+                    documentation discipline, and safety decisions.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="industry-lower-grid">
+        <section class="summary-panel">
+            <span class="section-badge">📊 Completion Summary</span>
+
+            <h2>Your mastery progress</h2>
+
+            <p>
+                This summary shows your completed training pathway and confirms your readiness
+                for industry-oriented pharmaceutical exposure.
+            </p>
+
+            <div class="completion-list">
+                <div class="completion-item">
+                    <div class="completion-icon">🟢</div>
+                    <div>
+                        <strong>Beginner Level</strong>
+                        <span>{{ mastery_status.beginner_progress }}</span>
+                    </div>
+                </div>
+
+                <div class="completion-item">
+                    <div class="completion-icon">🔵</div>
+                    <div>
+                        <strong>Intermediate Level</strong>
+                        <span>{{ mastery_status.intermediate_progress }}</span>
+                    </div>
+                </div>
+
+                <div class="completion-item">
+                    <div class="completion-icon">🔴</div>
+                    <div>
+                        <strong>Advanced Level</strong>
+                        <span>{{ mastery_status.advanced_progress }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-action-box">
+                <strong>Next Action</strong>
+                <p>{{ mastery_status.next_action }}</p>
+            </div>
+        </section>
+
+        <aside class="actions-panel">
+            <span class="section-badge">✚ Final Training Actions</span>
+
+            <h2>Continue after industry exposure</h2>
+
+            <p>
+                Review your final profile or compare your progress with other PharmaTrainerAI users
+                on the leaderboard.
+            </p>
+
+            <div class="actions">
+                <a class="primary-button" href="/profile/{{ user_id }}">View Final Profile</a>
+                <a class="secondary-button" href="/leaderboard">Leaderboard</a>
+            </div>
+
+            <div class="professional-note">
+                <strong>Professional Industry Note</strong>
+                <p>
+                    Treat these recommendations as career exposure areas: quality, process control,
+                    maintenance, safety, and GMP compliance are all critical in pharmaceutical operations.
+                </p>
+            </div>
+        </aside>
+    </section>
+</section>
+{% endblock %}

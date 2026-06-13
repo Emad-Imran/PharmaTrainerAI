@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PharmaTrainerAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body class="register-body">
+    <main class="register-page">
+        <section class="register-brand-panel" aria-label="PharmaTrainerAI introduction">
+            <div class="register-brand-content">
+                <div class="brand-top">
+                    <div class="brand-logo" aria-hidden="true">⚕</div>
+                    <div>
+                        <p class="brand-name">PharmaTrainerAI</p>
+                        <p class="brand-subtitle">Pharmaceutical Training Intelligence</p>
+                    </div>
+                </div>
+
+                <span class="hero-kicker">AI-guided GMP simulation</span>
+
+                <h1>Train smarter for real pharmaceutical decisions.</h1>
+
+                <p class="hero-text">
+                    Practice manufacturing, quality control, deviation handling, and compliance scenarios
+                    in a polished AI-powered learning environment built for modern pharma teams.
+                </p>
+
+                <div class="pharma-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">GMP</span>
+                        <span class="stat-label">Scenario-based compliance learning</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">AI</span>
+                        <span class="stat-label">Personalized training recommendations</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">QC</span>
+                        <span class="stat-label">Quality-focused decision practice</span>
+                    </div>
+                </div>
+
+                <div class="pharma-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 520 300" role="img">
+                        <defs>
+                            <linearGradient id="tubeGradient" x1="0" x2="1">
+                                <stop offset="0%" stop-color="#d8fff5"/>
+                                <stop offset="100%" stop-color="#80e7ff"/>
+                            </linearGradient>
+                            <linearGradient id="pillGradient" x1="0" x2="1">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="50%" stop-color="#ffffff"/>
+                                <stop offset="51%" stop-color="#33d6a6"/>
+                                <stop offset="100%" stop-color="#33d6a6"/>
+                            </linearGradient>
+                        </defs>
+
+                        <rect x="34" y="190" width="452" height="38" rx="19" fill="rgba(255,255,255,0.20)"/>
+                        <rect x="78" y="88" width="92" height="142" rx="24" fill="rgba(255,255,255,0.20)" stroke="rgba(255,255,255,0.55)"/>
+                        <rect x="94" y="120" width="60" height="82" rx="16" fill="url(#tubeGradient)" opacity="0.92"/>
+                        <rect x="105" y="62" width="38" height="34" rx="10" fill="rgba(255,255,255,0.85)"/>
+
+                        <rect x="224" y="68" width="78" height="162" rx="18" fill="rgba(255,255,255,0.20)" stroke="rgba(255,255,255,0.55)"/>
+                        <rect x="240" y="112" width="46" height="88" rx="13" fill="#d8fff5" opacity="0.9"/>
+                        <rect x="239" y="48" width="48" height="34" rx="10" fill="rgba(255,255,255,0.86)"/>
+
+                        <rect x="356" y="118" width="106" height="48" rx="24" fill="url(#pillGradient)" transform="rotate(-18 409 142)"/>
+                        <rect x="350" y="184" width="116" height="22" rx="11" fill="rgba(216,255,245,0.8)"/>
+                        <circle cx="404" cy="82" r="26" fill="rgba(216,255,245,0.22)" stroke="rgba(216,255,245,0.55)"/>
+                        <path d="M393 82h22M404 71v22" stroke="#d8fff5" stroke-width="6" stroke-linecap="round"/>
+
+                        <path d="M72 250 C150 224, 248 278, 456 242" fill="none" stroke="rgba(216,255,245,0.40)" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="register-card-wrap" aria-label="Create account form">
+            <a class="top-login-link" href="/login">Already have an account? Login</a>
+
+            <div class="register-card">
+                <div class="form-header">
+                    <span class="form-badge">Secure trainee access</span>
+                    <h2>Create your account</h2>
+                    <p class="register-description">
+                        Start your professional pharma training journey with structured scenarios,
+                        AI feedback, badges, and progress tracking.
+                    </p>
+                </div>
+
+                {% if error %}
+                    <div class="alert-box">{{ error }}</div>
+                {% endif %}
+
+                <form method="post" action="/register" class="auth-form">
+                    <div class="form-field">
+                        <label for="full_name">Full Name</label>
+                        <div class="input-shell">
+                            <span aria-hidden="true">👤</span>
+                            <input
+                                id="full_name"
+                                type="text"
+                                name="full_name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email Address</label>
+                        <div class="input-shell">
+                            <span aria-hidden="true">✉</span>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="name@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <div class="input-shell">
+                            <span aria-hidden="true">🔒</span>
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                placeholder="Create a secure password"
+                                autocomplete="new-password"
+                                required
+                            >
+                        </div>
+                        <p class="password-note">Use a strong password for your training profile.</p>
+                    </div>
+
+                    <button type="submit" class="register-button">
+                        Create PharmaTrainerAI Account
+                    </button>
+                </form>
+
+                <div class="security-strip">
+                    <div class="security-item">GMP Ready</div>
+                    <div class="security-item">AI Guided</div>
+                    <div class="security-item">Progress Based</div>
+                </div>
+
+                <p class="small-link">
+                    Already registered? <a href="/login">Login here</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

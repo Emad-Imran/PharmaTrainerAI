@@ -1,0 +1,286 @@
+﻿:root {
+    --base-navy: #071d35;
+    --base-blue: #0f6cbd;
+    --base-red: #e14658;
+    --base-red-dark: #b83243;
+    --base-green: #21a67a;
+    --base-cyan: #22c1c3;
+    --base-bg: #f6faff;
+    --base-card: #ffffff;
+    --base-text: #263648;
+    --base-muted: #6c7b8f;
+    --base-border: #dce9f1;
+    --base-soft-red: #fff0f2;
+    --base-soft-blue: #eef7ff;
+    --base-soft-green: #ecfff7;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(225, 70, 88, 0.12), transparent 26%),
+        radial-gradient(circle at 92% 10%, rgba(34, 193, 195, 0.15), transparent 30%),
+        linear-gradient(135deg, #f8fcff 0%, #f5fbf8 48%, #fff8f9 100%);
+    color: var(--base-text);
+}
+
+a {
+    transition: 0.18s ease;
+}
+
+.pharma-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stop older page CSS from adding duplicate pseudo logos */
+.pharma-shell .nav-brand a::before {
+    content: none !important;
+    display: none !important;
+}
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 15px 5%;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(220, 233, 241, 0.95);
+    box-shadow: 0 12px 34px rgba(7, 29, 53, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.nav-brand a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--base-navy);
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+}
+
+.nav-logo-mark {
+    width: 42px;
+    height: 42px;
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--base-red), var(--base-blue));
+    color: #ffffff;
+    font-size: 20px;
+    box-shadow: 0 13px 26px rgba(225, 70, 88, 0.22);
+}
+
+.nav-brand-text {
+    display: grid;
+    gap: 2px;
+}
+
+.nav-brand-name {
+    line-height: 1;
+}
+
+.nav-brand-subtitle {
+    color: var(--base-muted);
+    font-size: 10.5px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    color: #526174;
+    font-size: 13px;
+    font-weight: 850;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    background: var(--base-soft-blue);
+    color: var(--base-blue);
+    transform: translateY(-1px);
+}
+
+/* This is the real selected/current page style */
+.top-nav .nav-links a.is-active {
+    background: linear-gradient(135deg, var(--base-red), var(--base-blue));
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 13px 28px rgba(225, 70, 88, 0.22);
+}
+
+.top-nav .nav-links a.is-active:hover {
+    color: #ffffff !important;
+    box-shadow: 0 16px 34px rgba(15, 108, 189, 0.24);
+}
+
+.page-main {
+    flex: 1;
+    width: 100%;
+}
+
+.base-footer {
+    margin-top: auto;
+    padding: 32px 5%;
+    background:
+        linear-gradient(135deg, rgba(7, 29, 53, 0.98), rgba(15, 108, 189, 0.93)),
+        var(--base-navy);
+    color: #ffffff;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.footer-inner {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-logo {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 17px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #ffbec7;
+    font-size: 24px;
+}
+
+.footer-brand h3 {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.footer-brand p {
+    margin: 0;
+    color: rgba(255,255,255,0.68);
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.footer-badges {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.11);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.82);
+    font-size: 12.5px;
+    font-weight: 850;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 10px;
+    z-index: 200;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: var(--base-red);
+    color: #ffffff;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    left: 16px;
+}
+
+@media (max-width: 980px) {
+    .top-nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-badges {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 620px) {
+    .top-nav {
+        padding: 14px 4%;
+    }
+
+    .nav-brand a {
+        font-size: 19px;
+    }
+
+    .nav-logo-mark {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: 12.5px;
+    }
+
+    .base-footer {
+        padding: 26px 4%;
+    }
+}

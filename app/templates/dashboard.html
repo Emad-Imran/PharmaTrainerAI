@@ -1,0 +1,175 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+
+<section class="dashboard-page">
+    <div class="dashboard-hero">
+        <div class="hero-content">
+            <span class="dashboard-kicker">✚ Pharma Training Dashboard</span>
+
+            <h1 class="dashboard-title">
+                Welcome, <span>{{ user.full_name }}</span>
+            </h1>
+
+            <p class="dashboard-description">
+                Continue your adaptive pharmaceutical manufacturing training journey with
+                AI-guided recommendations, GMP-focused simulations, and professional progress tracking.
+            </p>
+
+            <div class="hero-tags">
+                <span class="hero-tag">💊 GMP Simulation</span>
+                <span class="hero-tag">⚕ Clinical-Style Training</span>
+                <span class="hero-tag">🧪 Quality Control Practice</span>
+                <span class="hero-tag">🤖 AI Recommendation Engine</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-visual-card" aria-hidden="true">
+                <svg viewBox="0 0 560 380" role="img">
+                    <defs>
+                        <linearGradient id="dashCapsule" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#ffffff"/>
+                            <stop offset="51%" stop-color="#e14658"/>
+                            <stop offset="100%" stop-color="#e14658"/>
+                        </linearGradient>
+
+                        <linearGradient id="dashLiquid" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#e5fffb"/>
+                            <stop offset="100%" stop-color="#22c1c3"/>
+                        </linearGradient>
+
+                        <linearGradient id="dashScreen" x1="0" x2="1">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.20)"/>
+                            <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="52" y="72" width="456" height="236" rx="34" fill="url(#dashScreen)" stroke="rgba(255,255,255,0.34)" stroke-width="3"/>
+                    <rect x="82" y="104" width="186" height="28" rx="14" fill="rgba(255,255,255,0.24)"/>
+                    <rect x="82" y="154" width="130" height="20" rx="10" fill="rgba(216,255,245,0.58)"/>
+                    <rect x="82" y="190" width="176" height="20" rx="10" fill="rgba(255,255,255,0.18)"/>
+                    <rect x="82" y="226" width="148" height="20" rx="10" fill="rgba(255,255,255,0.18)"/>
+
+                    <circle cx="392" cy="168" r="64" fill="rgba(225,70,88,0.18)" stroke="rgba(255,255,255,0.38)" stroke-width="4"/>
+                    <path d="M362 168h60M392 138v60" stroke="#ffb7c0" stroke-width="14" stroke-linecap="round"/>
+
+                    <rect x="328" y="252" width="142" height="42" rx="21" fill="url(#dashCapsule)" transform="rotate(-12 399 273)"/>
+                    <line x1="399" y1="230" x2="399" y2="316" stroke="rgba(7,29,53,0.10)" stroke-width="4" transform="rotate(-12 399 273)"/>
+
+                    <rect x="278" y="118" width="54" height="130" rx="18" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.42)" stroke-width="3"/>
+                    <rect x="290" y="156" width="30" height="64" rx="10" fill="url(#dashLiquid)" opacity="0.92"/>
+                    <rect x="291" y="94" width="28" height="32" rx="9" fill="rgba(255,255,255,0.82)"/>
+
+                    <path d="M72 326 C160 292, 278 352, 488 310" fill="none" stroke="rgba(216,255,245,0.42)" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-metrics">
+        <article class="metric-card points">
+            <div class="metric-top">
+                <p class="metric-label">Total Points</p>
+                <div class="metric-icon">🏆</div>
+            </div>
+            <p class="metric-value">{{ user.total_points }}</p>
+            <p class="metric-subtitle">
+                Your accumulated performance score across pharmaceutical training scenarios.
+            </p>
+        </article>
+
+        <article class="metric-card level">
+            <div class="metric-top">
+                <p class="metric-label">Current Level</p>
+                <div class="metric-icon">⚕</div>
+            </div>
+            <p class="metric-value">{{ user.current_level }}</p>
+            <p class="metric-subtitle">
+                Your active learning level based on progress, accuracy, and scenario completion.
+            </p>
+        </article>
+
+        <article class="metric-card streak">
+            <div class="metric-top">
+                <p class="metric-label">Current Streak</p>
+                <div class="metric-icon">🧪</div>
+            </div>
+            <p class="metric-value">{{ user.current_streak }}</p>
+            <p class="metric-subtitle">
+                Correct answer streak in your latest training activity.
+            </p>
+        </article>
+    </div>
+
+    <div class="dashboard-lower-grid">
+        <section class="recommendation-panel">
+            <span class="section-badge">🤖 Recommended Next Action</span>
+
+            <h2>AI-guided training path</h2>
+
+            <p class="panel-text">
+                Use the AI recommendation engine to receive your next suitable pharmaceutical
+                challenge based on previous scores, weak skill areas, and learning progress.
+            </p>
+
+            <div class="recommendation-card">
+                <div class="recommendation-icon">💊</div>
+                <div>
+                    <strong>Personalized pharma simulation</strong>
+                    <span>
+                        Continue with a targeted scenario designed to improve practical GMP,
+                        manufacturing, QA, and QC decision-making skills.
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions-panel">
+            <span class="section-badge">⚕ Quick Actions</span>
+
+            <h2>Training control center</h2>
+
+            <p class="panel-text">
+                Jump directly into recommendations, scenarios, your personal profile,
+                or the leaderboard from one professional dashboard.
+            </p>
+
+            <div class="actions">
+                <a class="primary-button" href="/recommendation/{{ user.id }}">View AI Recommendation</a>
+                <a class="secondary-button" href="/scenarios">View Scenarios</a>
+                <a class="secondary-button" href="/profile/{{ user.id }}">My Profile</a>
+                <a class="secondary-button" href="/leaderboard">Leaderboard</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="workflow-strip">
+        <article class="workflow-item">
+            <div class="workflow-icon">🏭</div>
+            <h3>Manufacturing</h3>
+            <p>Practice production decisions in pharma manufacturing workflows.</p>
+        </article>
+
+        <article class="workflow-item">
+            <div class="workflow-icon">🧪</div>
+            <h3>Quality Control</h3>
+            <p>Improve accuracy in testing, inspection, and quality checks.</p>
+        </article>
+
+        <article class="workflow-item">
+            <div class="workflow-icon">📋</div>
+            <h3>GMP Compliance</h3>
+            <p>Build confidence in documentation and compliance scenarios.</p>
+        </article>
+
+        <article class="workflow-item">
+            <div class="workflow-icon">⚕</div>
+            <h3>Clinical Mindset</h3>
+            <p>Use doctor-style decision discipline in training simulations.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}
